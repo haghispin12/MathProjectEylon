@@ -1,18 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/ic_launcher_background"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity2">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#E91E63"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/material_dynamic_primary10"
+            android:text="אתגר"
+            android:id="@+id/btMainEtgar"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            />
 
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/material_dynamic_primary0"
+            android:text="כפל עד 20"
+            android:id="@+id/btMainKefel"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/material_dynamic_primary20"
+            android:text="לוח הכפל"
+            android:id="@+id/btMainLuch"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="175dp"
+        android:layout_gravity="center"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:background="@color/material_dynamic_primary50"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/tvMain1"
+            
+            />
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:text="X"
+        android:gravity="center"
+        android:textStyle="bold"
+     />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:id="@+id/tvMain2"
+         android:textStyle="bold"
+     />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:hint="תשובה"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:id="@+id/etMainTsuva"
+        android:background="@color/material_dynamic_neutral95"
+        />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="@color/material_dynamic_neutral95"
+            android:text="בדיקה"
+            android:id="@+id/btMainBdica"
+            android:textStyle="bold"
+        />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0.7"
+            android:background="@color/material_dynamic_primary50"
+            android:text="save"
+            android:id="@+id/btMainSave"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            />
+            <Button
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_weight="0.7"
+            android:background="@color/material_dynamic_primary30"
+            android:text="show all users"
+            android:id="@+id/btMAinShow"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            />
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
+
+
+
 
 
 
