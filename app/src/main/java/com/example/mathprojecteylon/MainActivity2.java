@@ -27,6 +27,8 @@ public class MainActivity2 extends AppCompatActivity {
     private Button btMainSave;
     private Button btMAinShow;
     private int result;
+    private Exercise ex;
+    private Inter inter;
 
 
 
@@ -35,7 +37,10 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
+         ex=new Exercise(inter);
+
     }
+
 
         public  void init() {
             btMainEtgar = findViewById(R.id.btMainEtgar);
@@ -47,6 +52,13 @@ public class MainActivity2 extends AppCompatActivity {
             btMainBdica = findViewById(R.id.btMainBdica);
             btMainSave = findViewById(R.id.btMainSave);
             btMAinShow = findViewById(R.id.btMAinShow);
+            inter = new Inter() {
+                @Override
+                public void showNumber(int num1, int num2) {
+                 tvMain1.setText(num1+"");
+                 tvMain2.setText(num2+"");
+                }
+            };
 
 
 
@@ -54,70 +66,44 @@ public class MainActivity2 extends AppCompatActivity {
             btMainEtgar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    createClickListeneretgar();
+                    ex.etgar();
+                    //createClickListeneretgar();
                 }
 
             });
             btMainKefel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    createClickListenerkefel();
+                    ex.kefel();
+                    //createClickListenerkefel();
                 }
             });
             btMainLuch.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    createClickListenerluch();
+                    ex.luch();
+                    //createClickListenerluch();
                 }
+
             });
             btMainBdica.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
+
                     createClickListenerBdica();
                 }
             });
         }
-        public void createClickListeneretgar() {
-            Random random = new Random();
-            int num1 = random.nextInt(25);
-            int num2 = random.nextInt(50) + 5;
-            String s=num1+"";
-            String st=num2+"";
-            tvMain1.setText(s);
-            tvMain2.setText(st);
-            result=num1*num2;
 
-        }
-
-        public void createClickListenerkefel() {
-            Random random = new Random();
-            int num1 = random.nextInt(20);
-            int num2 = random.nextInt(10);
-            String s=num1+"";
-            String st=num2+"";
-            tvMain1.setText(s);
-            tvMain2.setText(st);
-            result=num1*num2;
-        }
-
-        public void createClickListenerluch() {
-            Random random = new Random();
-            int num1 = random.nextInt(10);
-            int num2 = random.nextInt(10);
-            String s=num1+"";
-            String st=num2+"";
-            tvMain1.setText(s);
-            tvMain2.setText(st);
-            result=num1*num2;
-        }
         public void createClickListenerBdica(){
-            String s=etMainTsuva.getText().toString();
-            String str=result+"";
-            if(s.equals(str)) {
+        String s=etMainTsuva.getText()+"";
+            boolean x= ex.isCorrect(s);
+            if(x) {
                 Toast.makeText(MainActivity2.this,"success",Toast.LENGTH_SHORT).show();
             }
             else {
                 Toast.makeText(MainActivity2.this,"wrong",Toast.LENGTH_SHORT).show();
             }
         }
+
 }
