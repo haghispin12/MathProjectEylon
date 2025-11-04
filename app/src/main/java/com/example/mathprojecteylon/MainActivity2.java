@@ -1,5 +1,6 @@
 package com.example.mathprojecteylon;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,8 @@ public class MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
          ex=new Exercise(inter);
+         Intent intent=getIntent();
+         String userName=intent.getStringExtra("name");
 
     }
 
@@ -105,5 +108,6 @@ public class MainActivity2 extends AppCompatActivity {
                 Toast.makeText(MainActivity2.this,"wrong",Toast.LENGTH_SHORT).show();
             }
         }
+
 
 }
