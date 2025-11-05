@@ -30,6 +30,7 @@ public class MainActivity2 extends AppCompatActivity {
     private int result;
     private Exercise ex;
     private Inter inter;
+    private int score;
 
 
 
@@ -41,7 +42,6 @@ public class MainActivity2 extends AppCompatActivity {
          ex=new Exercise(inter);
          Intent intent=getIntent();
          String userName=intent.getStringExtra("name");
-
     }
 
 
@@ -107,6 +107,9 @@ public class MainActivity2 extends AppCompatActivity {
             else {
                 Toast.makeText(MainActivity2.this,"wrong",Toast.LENGTH_SHORT).show();
             }
+        }
+        public void CheckScore(){
+        if
         }
 
 
