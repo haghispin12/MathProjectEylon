@@ -14,6 +14,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.color.utilities.Score;
+
 import java.util.Random;
 
 public class MainActivity2 extends AppCompatActivity {
@@ -31,6 +33,11 @@ public class MainActivity2 extends AppCompatActivity {
     private Exercise ex;
     private Inter inter;
     private int score;
+    private boolean Etg=false;
+    private boolean lch=false;
+    private boolean Kfl=false;
+    private User us;
+
 
 
 
@@ -41,7 +48,9 @@ public class MainActivity2 extends AppCompatActivity {
         init();
          ex=new Exercise(inter);
          Intent intent=getIntent();
-         String userName=intent.getStringExtra("name");
+        String y=intent.getStringExtra("name");
+         us=new User(y);
+         us.setScore(score);
     }
 
 
@@ -70,6 +79,7 @@ public class MainActivity2 extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     ex.etgar();
+                    Etg=true;
                     //createClickListeneretgar();
                 }
 
@@ -78,6 +88,7 @@ public class MainActivity2 extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     ex.kefel();
+                    Kfl=true;
                     //createClickListenerkefel();
                 }
             });
@@ -85,6 +96,7 @@ public class MainActivity2 extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     ex.luch();
+                    lch=true;
                     //createClickListenerluch();
                 }
 
@@ -101,16 +113,30 @@ public class MainActivity2 extends AppCompatActivity {
         public void createClickListenerBdica(){
         String s=etMainTsuva.getText()+"";
             boolean x= ex.isCorrect(s);
+            etMainTsuva.setText("");
             if(x) {
                 Toast.makeText(MainActivity2.this,"success",Toast.LENGTH_SHORT).show();
             }
             else {
                 Toast.makeText(MainActivity2.this,"wrong",Toast.LENGTH_SHORT).show();
             }
+            if (x==true){
+            if (Etg==true){
+            score=score+20;
+            }
+            if (lch==true){
+            score=score+5;
+                }
+            if (Kfl==true){
+            score=score+10;
+                }
+            }
+            Etg=false;
+            lch=false;
+            Kfl=false;
         }
-        public void CheckScore(){
-        if
-        }
+
+
 
 
 }

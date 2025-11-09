@@ -91,6 +91,7 @@
         android:textStyle="bold"
         android:id="@+id/etMainTsuva"
         android:background="@color/material_dynamic_neutral95"
+
         />
         <Button
             android:layout_width="match_parent"
