@@ -37,6 +37,7 @@ public class MainActivity2 extends AppCompatActivity {
     private boolean lch=false;
     private boolean Kfl=false;
     private User us;
+    private Button Rate;
 
 
 
@@ -64,6 +65,8 @@ public class MainActivity2 extends AppCompatActivity {
             btMainBdica = findViewById(R.id.btMainBdica);
             btMainSave = findViewById(R.id.btMainSave);
             btMAinShow = findViewById(R.id.btMAinShow);
+            Rate=findViewById(R.id.btRate);
+
             inter = new Inter() {
                 @Override
                 public void showNumber(int num1, int num2) {
@@ -108,7 +111,14 @@ public class MainActivity2 extends AppCompatActivity {
                     createClickListenerBdica();
                 }
             });
+            Rate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
         }
+
 
         public void createClickListenerBdica(){
         String s=etMainTsuva.getText()+"";
@@ -135,6 +145,8 @@ public class MainActivity2 extends AppCompatActivity {
             lch=false;
             Kfl=false;
         }
+
+
 
 
 
