@@ -9,6 +9,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContract;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -39,6 +44,13 @@ public class MainActivity2 extends AppCompatActivity {
     private User us;
     private Button Rate;
 
+
+    ActivityResultLauncher<Intent>activityResultLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+        @Override
+        public void onActivityResult(ActivityResult result) {
+        int myRate=result.getData().getIntExtra("Rate",-1);
+        }
+    });
 
 
 
@@ -114,7 +126,8 @@ public class MainActivity2 extends AppCompatActivity {
             Rate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                Intent intent= new Intent(MainActivity2.this, Rate.class);
+                activityResultLauncher.launch(intent);
                 }
             });
         }
