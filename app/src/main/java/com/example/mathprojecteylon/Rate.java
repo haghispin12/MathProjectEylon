@@ -18,12 +18,17 @@ public class Rate extends AppCompatActivity {
 
 
 
+public void init() {
+rate.findViewById(R.id.btRate);
+}
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate (Bundle savedInstanceState){
+       init();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
-        seek=findViewById(R.id.seek);
+        seek = findViewById(R.id.seek);
+
         seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -40,16 +45,19 @@ public class Rate extends AppCompatActivity {
 
             }
         });
+
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent inn=new Intent();
-                inn.putExtra("Rate",seek.getProgress());
-                setResult(RESULT_OK,inn);
+                Intent inn = new Intent();
+                inn.putExtra("Rate", seek.getProgress());
+                setResult(RESULT_OK, inn);
                 finish();
             }
         });
     }
+
+
 
 
 
