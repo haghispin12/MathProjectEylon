@@ -19,15 +19,16 @@ public class Rate extends AppCompatActivity {
 
 
 public void init() {
-rate.findViewById(R.id.btRate);
+    rate=findViewById(R.id.btRate);
+    seek = findViewById(R.id.seek);
 }
 
     @Override
     protected void onCreate (Bundle savedInstanceState){
-       init();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
-        seek = findViewById(R.id.seek);
+        init();
 
         seek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override

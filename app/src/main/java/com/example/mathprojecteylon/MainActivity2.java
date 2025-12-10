@@ -49,6 +49,7 @@ public class MainActivity2 extends AppCompatActivity {
         @Override
         public void onActivityResult(ActivityResult result) {
         int myRate=result.getData().getIntExtra("Rate",-1);
+        Toast.makeText(MainActivity2.this,myRate+"",Toast.LENGTH_SHORT).show();
         }
     });
 
