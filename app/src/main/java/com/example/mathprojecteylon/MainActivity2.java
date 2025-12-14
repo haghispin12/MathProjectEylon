@@ -62,7 +62,8 @@ public class MainActivity2 extends AppCompatActivity {
         init();
          ex=new Exercise(inter);
          Intent intent=getIntent();
-        String y=intent.getStringExtra("name");
+        String y=intent.getStringExtra("Name");
+        Toast.makeText(MainActivity2.this,"welcome "+y+'!',Toast.LENGTH_SHORT).show();
          us=new User(y);
          us.setScore(score);
     }
