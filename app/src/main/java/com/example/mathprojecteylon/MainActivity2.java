@@ -1,6 +1,7 @@
 package com.example.mathprojecteylon;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -66,6 +67,9 @@ public class MainActivity2 extends AppCompatActivity {
         Toast.makeText(MainActivity2.this,"welcome "+y+'!',Toast.LENGTH_SHORT).show();
          us=new User(y);
          us.setScore(score);
+
+
+
     }
 
 

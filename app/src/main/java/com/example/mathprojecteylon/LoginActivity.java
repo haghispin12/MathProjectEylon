@@ -26,6 +26,9 @@ public class LoginActivity extends AppCompatActivity {
        init();
        onCreateSub();
        getName();
+        SharedPreferences sh=getSharedPreferences("MyShared",MODE_PRIVATE);
+        String s1=sh.getString("name","");
+       Enter.setText(s1);
 
     }
     public void init (){
@@ -39,8 +42,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 SharedPreferences sharedPreferences =getSharedPreferences("MyShared",MODE_PRIVATE);
                 SharedPreferences.Editor myEdit=sharedPreferences.edit();
-                myEdit.putString("name",getText().toString());
-                myEdit.putInt("age",Integer.parseInt())
+                myEdit.putString("name",Enter.getText().toString());
+                myEdit.apply();
 
 
 
