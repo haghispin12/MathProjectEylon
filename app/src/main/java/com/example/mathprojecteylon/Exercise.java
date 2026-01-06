@@ -11,7 +11,7 @@ public class Exercise {
 
     public Exercise (Inter inter){
         this.inter=inter;
-    }
+    }//מבצע פעולה חשבונית
     public void etgar() {
         Random random = new Random();
         num1 = random.nextInt(25);

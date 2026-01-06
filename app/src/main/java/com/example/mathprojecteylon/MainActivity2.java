@@ -56,7 +56,7 @@ public class MainActivity2 extends AppCompatActivity {
 
 
 
-    @Override
+    @Override//פעולת onCreate  מייצרת את כול הדברים שקורים עם פתיחת מסך הMAIN
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -73,7 +73,7 @@ public class MainActivity2 extends AppCompatActivity {
     }
 
 
-        public  void init() {
+        public  void init() {//מבצעת חיבור בין הXML לקוד בזה שמסנכרנת בין מה שהכתפורים עושים למה שכתוב עליהם
             btMainEtgar = findViewById(R.id.btMainEtgar);
             btMainKefel = findViewById(R.id.btMainKefel);
             btMainLuch = findViewById(R.id.btMainLuch);
@@ -87,7 +87,7 @@ public class MainActivity2 extends AppCompatActivity {
 
             inter = new Inter() {
                 @Override
-                public void showNumber(int num1, int num2) {
+                public void showNumber(int num1, int num2) {//מבצעת השמה של מה שאמורים להכפיל בכתורי TextView
                  tvMain1.setText(num1+"");
                  tvMain2.setText(num2+"");
                 }
@@ -96,7 +96,7 @@ public class MainActivity2 extends AppCompatActivity {
 
 
 
-            btMainEtgar.setOnClickListener(new View.OnClickListener() {
+            btMainEtgar.setOnClickListener(new View.OnClickListener() {//פותח clickListener ומפרט מה שקורה ברגע שלוחצים על הפעולה
                 @Override
                 public void onClick(View view) {
                     ex.etgar();
@@ -104,8 +104,16 @@ public class MainActivity2 extends AppCompatActivity {
                     //createClickListeneretgar();
                 }
 
+
+
+
+
+
+
+                
+
             });
-            btMainKefel.setOnClickListener(new View.OnClickListener() {
+            btMainKefel.setOnClickListener(new View.OnClickListener() {//פותח clickListener ומפרט מה שקורה ברגע שלוחצים על הפעולה
                 @Override
                 public void onClick(View view) {
                     ex.kefel();
@@ -113,7 +121,7 @@ public class MainActivity2 extends AppCompatActivity {
                     //createClickListenerkefel();
                 }
             });
-            btMainLuch.setOnClickListener(new View.OnClickListener() {
+            btMainLuch.setOnClickListener(new View.OnClickListener() {//פותח clickListener ומפרט מה שקורה ברגע שלוחצים על הפעולה
                 @Override
                 public void onClick(View view) {
                     ex.luch();
@@ -122,14 +130,14 @@ public class MainActivity2 extends AppCompatActivity {
                 }
 
             });
-            btMainBdica.setOnClickListener(new View.OnClickListener(){
+            btMainBdica.setOnClickListener(new View.OnClickListener(){//פותח clickListener ומפרט מה שקורה ברגע שלוחצים על הפעולה
                 @Override
                 public void onClick(View view) {
 
                     createClickListenerBdica();
                 }
             });
-            Rate.setOnClickListener(new View.OnClickListener() {
+            Rate.setOnClickListener(new View.OnClickListener() {//פותח clickListener ומפרט מה שקורה ברגע שלוחצים על הפעולה
                 @Override
                 public void onClick(View view) {
                 Intent intent= new Intent(MainActivity2.this, Rate.class);
@@ -139,7 +147,7 @@ public class MainActivity2 extends AppCompatActivity {
         }
 
 
-        public void createClickListenerBdica(){
+        public void createClickListenerBdica(){//פותח clickListener ומפרט מה שקורה ברגע שלוחצים על הפעולה
         String s=etMainTsuva.getText()+"";
             boolean x= ex.isCorrect(s);
             etMainTsuva.setText("");

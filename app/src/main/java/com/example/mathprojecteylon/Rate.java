@@ -18,13 +18,13 @@ public class Rate extends AppCompatActivity {
 
 
 
-public void init() {
+public void init() { //מבצעת חיבור בין הXML לקוד בזה שמסנכרנת בין מה שהכתפורים עושים למה שכתוב עליהם
     rate=findViewById(R.id.btRate);
     seek = findViewById(R.id.seek);
 }
 
     @Override
-    protected void onCreate (Bundle savedInstanceState){
+    protected void onCreate (Bundle savedInstanceState){//פעולת onCreate  מייצרת את כול הדברים שקורים עם פתיחת מסך הRate
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rate);
@@ -47,7 +47,7 @@ public void init() {
             }
         });
 
-        rate.setOnClickListener(new View.OnClickListener() {
+        rate.setOnClickListener(new View.OnClickListener() {//פותח clickListener ומפרט מה שקורה ברגע שלוחצים על הפעולה
             @Override
             public void onClick(View view) {
                 Intent inn = new Intent();
