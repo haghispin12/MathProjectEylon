@@ -16,6 +16,8 @@ public class ShowOnUsers extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+   ShowOnUsers fragment=new ShowOnUsers();
+
 
     }
 
@@ -25,5 +27,6 @@ public class ShowOnUsers extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment, container, false);
         return view;
+
     }
 }
