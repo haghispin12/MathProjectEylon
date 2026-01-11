@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.material.color.utilities.Score;
 
@@ -67,6 +68,7 @@ public class MainActivity2 extends AppCompatActivity {
         Toast.makeText(MainActivity2.this,"welcome "+y+'!',Toast.LENGTH_SHORT).show();
          us=new User(y);
          us.setScore(score);
+
 
 
 
@@ -144,7 +146,16 @@ public class MainActivity2 extends AppCompatActivity {
                 activityResultLauncher.launch(intent);
                 }
             });
+            btMAinShow.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ShowOnUsers fragment=new ShowOnUsers();
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment,"anytagName").commit();
+                }
+            });
         }
+
+
 
 
         public void createClickListenerBdica(){//פותח clickListener ומפרט מה שקורה ברגע שלוחצים על הפעולה
@@ -172,6 +183,7 @@ public class MainActivity2 extends AppCompatActivity {
             lch=false;
             Kfl=false;
         }
+
 
 
 
