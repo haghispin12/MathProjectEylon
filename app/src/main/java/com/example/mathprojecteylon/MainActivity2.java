@@ -22,6 +22,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.color.utilities.Score;
+import com.google.gson.Gson;
 
 import java.util.Random;
 
@@ -35,7 +36,7 @@ public class MainActivity2 extends AppCompatActivity {
     private EditText etMainTsuva;
     private Button btMainBdica;
     private Button btMainSave;
-    private Button btMAinShow;
+    private Button btMainShow;
     private int result;
     private Exercise ex;
     private Inter inter;
@@ -84,7 +85,7 @@ public class MainActivity2 extends AppCompatActivity {
             etMainTsuva = findViewById(R.id.etMainTsuva);
             btMainBdica = findViewById(R.id.btMainBdica);
             btMainSave = findViewById(R.id.btMainSave);
-            btMAinShow = findViewById(R.id.btMAinShow);
+            btMainShow = findViewById(R.id.btMainShow);
             Rate=findViewById(R.id.btRate);
 
             inter = new Inter() {
@@ -146,11 +147,16 @@ public class MainActivity2 extends AppCompatActivity {
                 activityResultLauncher.launch(intent);
                 }
             });
-            btMAinShow.setOnClickListener(new View.OnClickListener() {
+            btMainShow.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    ShowOnUsers fragment=new ShowOnUsers();
-                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,fragment,"anytagName").commit();
+                    ShowOnUsers ShowOn=new ShowOnUsers();
+                    Gson gson = new Gson();
+                    String json = gson.toJson(us);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("myUser", json);
+                    ShowOn.setArguments(bundle);
+                    getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,ShowOn,"anytagName").commit();
                 }
             });
         }

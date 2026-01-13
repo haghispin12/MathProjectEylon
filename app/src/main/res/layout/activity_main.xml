@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:background="@color/design_default_color_error"
+    android:layout_height="match_parent"
+    >
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -131,7 +138,7 @@
             android:layout_weight="0.7"
             android:background="@color/material_dynamic_primary30"
             android:text="show all users"
-            android:id="@+id/btMAinShow"
+            android:id="@+id/btMainShow"
             android:textStyle="bold"
             android:textSize="15dp"
             />
@@ -141,6 +148,7 @@
 
 
 </LinearLayout>
+    </FrameLayout>
 
 
 

@@ -10,11 +10,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+
 
 public class ShowOnUsers extends Fragment {
-private EditText user;
+private User user;
 private TextView score;
 private TextView rating;
+
 
 
     @Override
@@ -31,8 +34,16 @@ private TextView rating;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment, container, false);
-        return view;
+        rating=view.findViewById(R.id.TvRa);
+        score=view.findViewById(R.id.TvRa);
 
+        String myUser1  = getArguments().getString("user");
+        Gson gson = new Gson();
+        User myUser = gson.fromJson(myUser1, User.class);
+        user.setRating(myUser.getRating());
+        rating.setText(user.getRating());
+
+        return view;
     }
 
 

@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/frameLayout"
-    android:layout_width="match_parent"
-    android:background="@color/material_dynamic_secondary95"
-    android:layout_height="match_parent"
-    >
-
 <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/material_dynamic_primary10"
     android:orientation="vertical"
-    android:backgroundTint="@color/material_on_surface_stroke"
     >
 
 
@@ -22,8 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:orientation="horizontal"
-
-
         >
 
 
@@ -36,6 +25,7 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:id="@+id/EdUs"
+        android:textColor="@color/material_dynamic_neutral_variant80"
         />
 
     <TextView
@@ -46,6 +36,7 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:id="@+id/TvSc"
+        android:textColor="@color/material_dynamic_neutral_variant80"
         />
     <TextView
         android:layout_width="85dp"
@@ -55,6 +46,7 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:id="@+id/TvRa"
+        android:textColor="@color/material_dynamic_neutral_variant80"
 
         />
     </LinearLayout>
@@ -75,6 +67,10 @@
 
 
         />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 
     <Button
         android:layout_width="200dp"
@@ -88,7 +84,7 @@
 
 </LinearLayout>
 
-   </FrameLayout>
+
 
 
 
