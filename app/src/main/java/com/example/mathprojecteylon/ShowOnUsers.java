@@ -35,13 +35,13 @@ private TextView rating;
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment, container, false);
         rating=view.findViewById(R.id.TvRa);
-        score=view.findViewById(R.id.TvRa);
+        score=view.findViewById(R.id.TvSc);
 
-        String myUser1  = getArguments().getString("user");
+        String myUser1  = getArguments().getString("myUser");
         Gson gson = new Gson();
-        User myUser = gson.fromJson(myUser1, User.class);
-        user.setRating(myUser.getRating());
-        rating.setText(user.getRating());
+        user= gson.fromJson(myUser1, User.class);
+        //user.setRating(myUser.getRating());
+        rating.setText(user.getRating()+"");
 
         return view;
     }
