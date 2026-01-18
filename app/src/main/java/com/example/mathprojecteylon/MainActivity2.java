@@ -51,7 +51,8 @@ public class MainActivity2 extends AppCompatActivity {
     ActivityResultLauncher<Intent>activityResultLauncher=registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
         @Override
         public void onActivityResult(ActivityResult result) {
-        int myRate=result.getData().getIntExtra("Rate",-1);
+        int myRate=result.getData().getIntExtra("Rate",-1);//
+        us.setRating(myRate);
         Toast.makeText(MainActivity2.this,myRate+"",Toast.LENGTH_SHORT).show();
         }
     });
@@ -147,7 +148,7 @@ public class MainActivity2 extends AppCompatActivity {
                 activityResultLauncher.launch(intent);
                 }
             });
-            btMainShow.setOnClickListener(new View.OnClickListener() {
+            btMainShow.setOnClickListener(new View.OnClickListener() {//פותח את הפרגמנט והכנסה אליו נתונים
                 @Override
                 public void onClick(View view) {
                     ShowOnUsers ShowOn=new ShowOnUsers();
@@ -157,6 +158,7 @@ public class MainActivity2 extends AppCompatActivity {
                     bundle.putString("myUser", json);
                     ShowOn.setArguments(bundle);
                     getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout,ShowOn,"anytagName").commit();
+
                 }
             });
         }
@@ -185,6 +187,7 @@ public class MainActivity2 extends AppCompatActivity {
             score=score+10;
                 }
             }
+            us.setScore(score);
             Etg=false;
             lch=false;
             Kfl=false;

@@ -1,9 +1,15 @@
 package com.example.mathprojecteylon;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
+
 public class User {
     private String Name;
     private int score;
     private int rating;
+    private long id;
+    private Uri uri;
+    private Bitmap bitmap;
 
 
 public User (String x){
@@ -33,5 +39,29 @@ public User (String x){
 
     public int getRating() {
         return rating;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Uri getUri() {
+        return uri;
+    }
+
+    public void setUri(Uri uri) {
+        this.uri = uri;
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 }
