@@ -63,14 +63,14 @@ private ImageView showPic;
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment, container, false);
-        rating=view.findViewById(R.id.TvRa);
+        rating=view.findViewById(R.id.TvRa);//מבצע הכנסה של הכפתור לקוד
         score=view.findViewById(R.id.TvSc);
         us=view.findViewById(R.id.EdUs);
         addPicture=view.findViewById(R.id.addP);
         showPic=view.findViewById(R.id.ImageV);
 
 
-        String myUser1  = getArguments().getString("myUser");
+        String myUser1  = getArguments().getString("myUser");//מביא נתונים
         Gson gson = new Gson();
         user= gson.fromJson(myUser1, User.class);
         //user.setRating(myUser.getRating());
