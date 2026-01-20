@@ -1,7 +1,9 @@
 package com.example.mathprojecteylon;
 
+import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
@@ -39,7 +41,7 @@ private ImageView showPic;
             new ActivityResultCallback<ActivityResult>(){
                 @Override
                 public void onActivityResult(ActivityResult result){
-                 if(result.getResultCode()==RESULT_OK){
+                 if(result.getResultCode()== RESULT_OK){
                      showPic.setImageURI(uri);
                  }
 
@@ -65,6 +67,7 @@ private ImageView showPic;
         score=view.findViewById(R.id.TvSc);
         us=view.findViewById(R.id.EdUs);
         addPicture=view.findViewById(R.id.addP);
+        showPic=view.findViewById(R.id.ImageV);
 
 
         String myUser1  = getArguments().getString("myUser");
