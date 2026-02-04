@@ -16,11 +16,14 @@ public User (String x){
  this.Name=x;
 }
 
+    public User(long id, String name, int rating, Bitmap bitmap, int score) {
+    }
+
     public void setScore(int score) {
         this.score = score;
 
     }
-
+    
     public String getName() {
         return Name;
     }

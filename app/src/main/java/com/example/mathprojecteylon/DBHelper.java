@@ -68,9 +68,9 @@ public class DBHelper extends SQLiteOpenHelper {
         public long insert(User user, Context context){
             database = getWritableDatabase(); // get access to write the database
             ContentValues values = new ContentValues();
-            values.put(COLUMN_NAME, user.getUserName());
+            values.put(COLUMN_NAME, user.getName());
             values.put(COLUMN_RATE, user.getRating());
-            values.put(COLUMN_SCORE, user.getMyScore());
+            values.put(COLUMN_SCORE, user.getScore());
 
             // stored as Binary Large OBject ->  BLOB
             try {
@@ -99,7 +99,7 @@ public class DBHelper extends SQLiteOpenHelper {
             database = getWritableDatabase();
             ContentValues values = new ContentValues();
             values.put(COLUMN_ID, user.getId());
-            values.put(COLUMN_NAME, user.getUserName());
+            values.put(COLUMN_NAME, user.getName());
             values.put(COLUMN_RATE, user.getRating());
             // stored as Binary Large OBject ->  BLOB
             values.put(COLUMN_PICTURE, getBytes(user.getBitmap()));
