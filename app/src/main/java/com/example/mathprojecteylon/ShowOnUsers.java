@@ -3,6 +3,7 @@ package com.example.mathprojecteylon;
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -35,6 +36,7 @@ private EditText us;
 private Uri uri;
 private Button addPicture;
 private ImageView showPic;
+private Button addUser;
 
     ActivityResultLauncher<Intent>startCamera=registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -43,6 +45,7 @@ private ImageView showPic;
                 public void onActivityResult(ActivityResult result){
                  if(result.getResultCode()== RESULT_OK){
                      showPic.setImageURI(uri);
+                     user.setUri(uri);
                  }
 
                 }
@@ -58,6 +61,7 @@ private ImageView showPic;
     }
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,6 +72,7 @@ private ImageView showPic;
         us=view.findViewById(R.id.EdUs);
         addPicture=view.findViewById(R.id.addP);
         showPic=view.findViewById(R.id.ImageV);
+        addUser=view.findViewById(R.id.addUS);
 
 
         String myUser1  = getArguments().getString("myUser");//מביא נתונים
@@ -77,32 +82,43 @@ private ImageView showPic;
         rating.setText("rating:"+user.getRating());
         score.setText("score:"+user.getScore());
         us.setText("name:"+user.getName());
-
-   addPicture.setOnClickListener(new View.OnClickListener() {
-       @Override
-       public void onClick(View view) {
-
-
-
-
-        ContentValues values = new ContentValues();
-
-        values.put(MediaStore.Images.Media.TITLE, "New Picture");
-        values.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
-
-        uri = requireContext().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);// הגדרת כותרת והסבר לתמונה במשתנה uri
-
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// הגדרת intent עבור צילום והעמסת uri עליו באמצעות key
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
-
-        startCamera.launch(cameraIntent);// שימוש באובייקט שבנינו להאזנה על מנת להפעיל את המצלמה
+        addUser.setOnClickListener(new View.OnClickListener() {
+                                       @Override
+                                       public void onClick(View view) {
+                                       dbAddUSer();
+                                       }
+                                   });
 
 
+                addPicture.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-       }
-   });
+
+                        ContentValues values = new ContentValues();
+
+                        values.put(MediaStore.Images.Media.TITLE, "New Picture");
+                        values.put(MediaStore.Images.Media.DESCRIPTION, "From Camera");
+
+                        uri = requireContext().getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);// הגדרת כותרת והסבר לתמונה במשתנה uri
+
+                        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);// הגדרת intent עבור צילום והעמסת uri עליו באמצעות key
+                        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+
+                        startCamera.launch(cameraIntent);// שימוש באובייקט שבנינו להאזנה על מנת להפעיל את המצלמה
+
+
+                    }
+                });
         return view;
+
+
+
     }
 
-
+    public void dbAddUSer(){
+        DBHelper db=new DBHelper(getActivity());
+        long id=db.insert (user,getActivity());
+        int x=0;
+    }
 }
