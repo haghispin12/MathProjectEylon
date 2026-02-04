@@ -27,6 +27,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
+
 
 public class ShowOnUsers extends Fragment {
 private User user;
@@ -37,6 +39,7 @@ private Uri uri;
 private Button addPicture;
 private ImageView showPic;
 private Button addUser;
+private ArrayList<User> Array;
 
     ActivityResultLauncher<Intent>startCamera=registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -120,5 +123,8 @@ private Button addUser;
         DBHelper db=new DBHelper(getActivity());
         long id=db.insert (user,getActivity());
         int x=0;
+    }
+    public User dbSelectUsers(){
+
     }
 }
