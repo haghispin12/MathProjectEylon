@@ -69,9 +69,10 @@
 
         />
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="350dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/ImageV"
+        android:layout_gravity="center"
 
         />
 
@@ -83,6 +84,9 @@
         android:textStyle="bold"
         android:id="@+id/addUS"
         />
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
 
 
