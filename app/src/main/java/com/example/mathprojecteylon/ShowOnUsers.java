@@ -85,7 +85,9 @@ private ArrayList<User> Array;
         rating.setText("rating:"+user.getRating());
         score.setText("score:"+user.getScore());
         us.setText("name:"+user.getName());
-        addUser.setOnClickListener(new View.OnClickListener() {
+        dbSelectUsers();
+        addUser.setOnClickListener(new View.OnClickListener()
+        {
                                        @Override
                                        public void onClick(View view) {
                                        dbAddUSer();
@@ -122,14 +124,17 @@ private ArrayList<User> Array;
     public void dbAddUSer(){
         DBHelper db=new DBHelper(getActivity());
         long id=db.insert (user,getActivity());
-        int x=0;
+        dbSelectUsers();
+
+
     }
-   public ArrayList<User> dbSelectUsers(){
+    
+
+
+   public void dbSelectUsers(){
     ArrayList<User> x=new ArrayList<>();
-    x.set(user.getRating(),user);
-    dbSelectUsers();
-    return x;
-
-
+       DBHelper db=new DBHelper(getActivity());
+       x=db.selectAll();
+       int t=0;
      }
 }

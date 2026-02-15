@@ -17,6 +17,11 @@ public User (String x){
 }
 
     public User(long id, String name, int rating, Bitmap bitmap, int score) {
+    this.id=id;
+    this.Name=name;
+    this.rating=rating;
+    this.bitmap=bitmap;
+    this.score=score;
     }
 
     public void setScore(int score) {
