@@ -124,7 +124,12 @@ private ArrayList<User> Array;
         long id=db.insert (user,getActivity());
         int x=0;
     }
-    public User dbSelectUsers(){
+   public ArrayList<User> dbSelectUsers(){
+    ArrayList<User> x=new ArrayList<>();
+    x.set(user.getRating(),user);
+    dbSelectUsers();
+    return x;
 
-    }
+
+     }
 }
