@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity"
+    tools:context=".mathproject.LoginActivity"
  android:background="@color/material_on_surface_emphasis_high_type"
     android:orientation="vertical"
     android:gravity="center"

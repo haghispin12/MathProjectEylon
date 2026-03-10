@@ -1,4 +1,4 @@
-package com.example.mathprojecteylon;
+package com.example.mathprojecteylon.mathproject;
 
 public interface Inter {
 

@@ -1,10 +1,8 @@
-package com.example.mathprojecteylon;
+package com.example.mathprojecteylon.mathproject;
 
-import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.net.Uri;
@@ -25,6 +23,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mathprojecteylon.R;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;

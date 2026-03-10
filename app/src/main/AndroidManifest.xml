@@ -13,10 +13,10 @@
         android:theme="@style/Theme.MathProjectEylon"
         tools:targetApi="31">
         <activity
-            android:name=".Rate"
+            android:name=".pizzaproject.SignIn"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".pizzaproject.LogInActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +25,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity2"
-            android:exported="true"></activity>
+            android:name=".mathproject.Rate"
+            android:exported="false" />
+        <activity
+            android:name=".mathproject.LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".mathproject.MainActivity2"
+            android:exported="true" />
     </application>
 
 </manifest>

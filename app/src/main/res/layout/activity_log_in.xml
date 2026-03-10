@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".pizzaproject.LogInActivity"
+    android:gravity="">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/design_default_color_error"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ברוכים הבאים  "
+            android:layout_gravity="center"
+            android:textSize="60dp"
+            android:textStyle="bold"> </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="אין לכם חשבון ?
+            להרשמה לחצו
+             בכפתור למטה:"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:layout_gravity="center"
+            > </TextView>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="להרשמה לחצו"
+            android:layout_gravity="center"
+            android:id="@+id/signin"
+            > </Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="כניסת רשומים"
+            android:layout_gravity="center"
+            android:id="@+id/login"
+            > </Button>
+
+    </LinearLayout>
+
+</LinearLayout>

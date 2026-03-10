@@ -1,4 +1,4 @@
-package com.example.mathprojecteylon;
+package com.example.mathprojecteylon.mathproject;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.mathprojecteylon.R;
 
 public class Rate extends AppCompatActivity {
     private SeekBar seek;
