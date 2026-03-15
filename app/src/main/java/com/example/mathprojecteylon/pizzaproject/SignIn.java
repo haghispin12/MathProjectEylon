@@ -14,46 +14,38 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.mathprojecteylon.R;
 
 public class SignIn extends AppCompatActivity {
-    private EditText user;
-    private EditText pass;
-    private EditText Email;
-    private Button Save;
+
+    private EditText FirstNameS;
+    private EditText LastNameS;
+    private EditText adressS;
+    private EditText userNS;
+    private EditText emailS;
+    private EditText phoneS;
+    private EditText passS;
+    private EditText passConfiormS;
+
+    private Button registerS;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        user.findViewById(R.id.use);
-        pass.findViewById(R.id.pass);
-        Email.findViewById(R.id.email);
-        Save.findViewById(R.id.save);
+        FirstNameS.findViewById(R.id.etFirstName);
+        LastNameS.findViewById(R.id.etLastName);
+        adressS.findViewById(R.id.etAddress);
+        userNS.findViewById(R.id.etUsername);
+        emailS.findViewById(R.id.etEmail);
+        phoneS.findViewById(R.id.etPhone);
+        passS.findViewById(R.id.etPassword);
+        passConfiormS.findViewById(R.id.etPasswordConfirm);
+        registerS.findViewById(R.id.btnRegister);
         init();
 
     }
-    public void init(){
-        user.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
-        pass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    public void init() {
 
-            }
-        });
-        Email.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
-        Save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 }

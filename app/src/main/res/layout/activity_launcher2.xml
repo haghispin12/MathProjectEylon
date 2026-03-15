@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -9,14 +8,21 @@
     android:gravity="center"
     android:padding="32dp"
     android:background="#FFF8F0"
-    tools:context=".pizzaproject.logIn">
+    tools:context=".pizzaproject.launcher2">
 
-    <!-- כותרת -->
+    <!-- אמוג'י + כותרת -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="🍕 Pizza Project"
-        android:textSize="45sp"
+        android:text="🍕"
+        android:textSize="70sp"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ברוכים הבאים!"
+        android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="#C0392B"
         android:layout_marginBottom="8dp" />
@@ -24,41 +30,39 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="התחבר לחשבון שלך"
-        android:textSize="19sp"
+        android:text="Pizza Project"
+        android:textSize="16sp"
         android:textColor="#999999"
-        android:layout_marginBottom="36dp" />
+        android:layout_marginBottom="48dp" />
 
-    <!-- שדה שם משתמש -->
-    <EditText
-        android:id="@+id/etUsername"
+    <!-- כפתור כניסת מנהלים -->
+    <Button
+        android:id="@+id/btnAdmin"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:hint="שם משתמש"
-        android:inputType="text"
-        android:paddingHorizontal="16dp"
-        android:textSize="18sp"
+        android:text="כניסת מנהלים"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#C0392B"
         android:layout_marginBottom="16dp" />
 
-
-
-    <!-- שדה סיסמה -->
-    <EditText
-        android:id="@+id/etPassword"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:hint="סיסמה"
-        android:inputType="textPassword"
-        android:paddingHorizontal="16dp"
-        android:textSize="18sp"
-        android:layout_marginBottom="28dp" />
-
-    <!-- כפתור כניסה -->
+    <!-- כפתור כניסת לקוחות -->
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnCustomer"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:text="כניסה"
+        android:text="כניסת לקוחות"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#C0392B"
+        android:layout_marginBottom="16dp" />
+
+    <!-- כפתור הרשמה -->
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="אין לך חשבון? הירשם כאן"
         android:textSize="16sp"
         android:textColor="#FFFFFF"
         android:backgroundTint="#C0392B" />

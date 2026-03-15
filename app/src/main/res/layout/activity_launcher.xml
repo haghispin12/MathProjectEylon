@@ -1,52 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context=".pizzaproject.launcher"
-    android:gravity="">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/design_default_color_error"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ברוכים הבאים  "
-            android:layout_gravity="center"
-            android:textSize="60dp"
-            android:textStyle="bold"> </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="אין לכם חשבון ?
-            להרשמה לחצו
-             בכפתור למטה:"
-            android:textStyle="bold"
-            android:textSize="35dp"
-            android:layout_gravity="center"
-            > </TextView>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="להרשמה לחצו"
-            android:layout_gravity="center"
-            android:id="@+id/signin"
-            > </Button>
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#FFF8F0"
+    tools:context=".pizzaproject.launcher">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="כניסת רשומים"
-            android:layout_gravity="center"
-            android:id="@+id/login"
-            > </Button>
+    <!-- אמוג'י פיצה -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🍕"
+        android:textSize="80sp"
+        android:layout_marginBottom="16dp" />
 
-    </LinearLayout>
+    <!-- שם האפליקציה -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🍕פיצה אילן🍕"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="#C0392B"
+        android:layout_marginBottom="8dp" />
+
+    <!-- תת כותרת -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="הפיצה הכי טובה בעיר 🔥"
+        android:textSize="18sp"
+        android:textColor="#999999" />
 
 </LinearLayout>

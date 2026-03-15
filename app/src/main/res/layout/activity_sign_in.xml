@@ -1,65 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#FFF8F0"
     tools:context=".pizzaproject.SignIn">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity=""
-        android:background="@color/material_dynamic_neutral_variant20"
-        >
-    <TextView
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="הרשמה:"
-        android:textSize="50dp"
-        android:textColor="@color/material_dynamic_neutral60"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
 
-        > </TextView>
-        <EditText
+        <!-- כותרת -->
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint=":שם משתמש"
+            android:text="🍕"
+            android:textSize="70sp"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="הרשמה"
+            android:textSize="32sp"
             android:textStyle="bold"
-            android:textSize="50dp"
-            android:id="@+id/use"
-            > </EditText>
-        <EditText
+            android:textColor="#C0392B"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:text="צור חשבון חדש"
+            android:textSize="15sp"
+            android:textColor="#999999"
+            android:layout_marginBottom="36dp" />
+
+        <!-- שדה שם -->
+        <EditText
+            android:id="@+id/etFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="שם פרטי"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="16dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- שדה שם משפחה -->
+        <EditText
+            android:id="@+id/etLastName"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="שם משפחה"
+            android:inputType="textPersonName"
+            android:paddingHorizontal="16dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- שדה כתובת -->
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="כתובת"
+            android:inputType="textPostalAddress"
+            android:paddingHorizontal="16dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- שדה שם משתמש -->
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="שם משתמש"
+            android:inputType="text"
+            android:paddingHorizontal="16dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- שדה אימייל -->
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="אימייל"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="16dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- שדה טלפון -->
+        <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="טלפון"
+            android:inputType="phone"
+            android:paddingHorizontal="16dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- שדה סיסמה -->
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
             android:hint="סיסמה"
-            android:textStyle="bold"
-            android:textSize="50dp"
-            android:id="@+id/pass"
+            android:inputType="textPassword"
+            android:paddingHorizontal="16dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="16dp" />
 
-            > </EditText>
+        <!-- שדה אימות סיסמה -->
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:hint="אימייל:"
-            android:textStyle="bold"
-            android:textSize="50dp"
-            android:id="@+id/email"
-            > </EditText>
+            android:id="@+id/etPasswordConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="אימות סיסמה"
+            android:inputType="textPassword"
+            android:paddingHorizontal="16dp"
+            android:textSize="15sp"
+            android:layout_marginBottom="28dp" />
+
+        <!-- כפתור הרשמה -->
         <Button
-            android:layout_width="300dp"
-            android:layout_height="150dp"
-            android:layout_gravity="center"
-            android:text="שמירה"
-            android:textSize="50dp"
-            android:id="@+id/save"
-            > </Button>
+            android:id="@+id/btnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="הרשמה"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#C0392B" />
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
