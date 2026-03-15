@@ -5,48 +5,71 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    tools:context=".pizzaproject.LogInActivity"
-    android:gravity="">
-    <LinearLayout
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="#FFF8F0"
+    tools:context=".pizzaproject.logIn">
+
+    <!-- כותרת -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🍕 Pizza Project"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#C0392B"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="התחבר לחשבון שלך"
+        android:textSize="15sp"
+        android:textColor="#999999"
+        android:layout_marginBottom="36dp" />
+
+    <!-- שדה שם משתמש -->
+    <EditText
+        android:id="@+id/etUsername"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/design_default_color_error"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ברוכים הבאים  "
-            android:layout_gravity="center"
-            android:textSize="60dp"
-            android:textStyle="bold"> </TextView>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="אין לכם חשבון ?
-            להרשמה לחצו
-             בכפתור למטה:"
-            android:textStyle="bold"
-            android:textSize="35dp"
-            android:layout_gravity="center"
-            > </TextView>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="להרשמה לחצו"
-            android:layout_gravity="center"
-            android:id="@+id/signin"
-            > </Button>
+        android:layout_height="52dp"
+        android:hint="שם משתמש"
+        android:inputType="text"
+        android:paddingHorizontal="16dp"
+        android:textSize="15sp"
+        android:layout_marginBottom="16dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="כניסת רשומים"
-            android:layout_gravity="center"
-            android:id="@+id/login"
-            > </Button>
+    <!-- שדה אימייל -->
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:hint="אימייל"
+        android:inputType="textEmailAddress"
+        android:paddingHorizontal="16dp"
+        android:textSize="15sp"
+        android:layout_marginBottom="16dp" />
 
-    </LinearLayout>
+    <!-- שדה סיסמה -->
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:hint="סיסמה"
+        android:inputType="textPassword"
+        android:paddingHorizontal="16dp"
+        android:textSize="15sp"
+        android:layout_marginBottom="28dp" />
+
+    <!-- כפתור כניסה -->
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="כניסה"
+        android:textSize="16sp"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#C0392B" />
 
 </LinearLayout>
