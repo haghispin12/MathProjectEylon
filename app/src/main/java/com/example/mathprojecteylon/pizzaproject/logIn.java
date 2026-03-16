@@ -1,9 +1,11 @@
 package com.example.mathprojecteylon.pizzaproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +37,18 @@ public class logIn extends AppCompatActivity {
    enter.setOnClickListener(new View.OnClickListener() {
        @Override
        public void onClick(View view) {
-
+       String userName =userN.getText().toString();
+       String password=pass.getText().toString();
+         for(User u:User.users ){
+             String t=u.getPassS()+"";
+             if(u.getUserNS().equals(userName)&&t.equals(password)){
+                 Intent intent = new Intent(logIn.this, MainActivityPizza.class);
+                 startActivity(intent);
+             }
+             else {
+                 Toast.makeText(logIn.this, "סיסמה שגויה נסה שוב", Toast.LENGTH_SHORT).show();
+             }
+}
        }
    });
     }
