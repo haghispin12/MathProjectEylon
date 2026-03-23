@@ -13,41 +13,40 @@
         android:theme="@style/Theme.MathProjectEylon"
         tools:targetApi="31">
         <activity
+            android:name=".pizzaproject.MainLauncher"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".pizzaproject.PizzaDetailsActivity"
             android:exported="false" />
         <activity
             android:name=".pizzaproject.MainActivityPizza"
             android:exported="false" />
         <activity
-            android:name=".pizzaproject.launcher2"
-            android:exported="false" />
+            android:name=".pizzaproject.launcher"
+            android:exported="true"/>
         <activity
-            android:name=".pizzaproject.logIn"
-            android:exported="false" />
+            android:name=".pizzaproject.launcher2"
+            android:exported="true"/>
+
         <activity
             android:name=".pizzaproject.SignIn"
             android:exported="false" />
         <activity
-            android:name=".pizzaproject.logInActivity"
+            android:name=".pizzaproject.logIn"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+                   </activity>
         <activity
             android:name=".mathproject.Rate"
             android:exported="false" />
         <activity
             android:name=".mathproject.LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"/>
         <activity
             android:name=".mathproject.MainActivity2"
             android:exported="true" />
