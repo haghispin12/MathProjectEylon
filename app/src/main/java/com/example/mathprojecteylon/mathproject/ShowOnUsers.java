@@ -13,6 +13,8 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
@@ -22,6 +24,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.mathprojecteylon.R;
 import com.google.gson.Gson;
@@ -39,6 +42,7 @@ private Button addPicture;
 private ImageView showPic;
 private Button addUser;
 private ArrayList<User> Array;
+private RecyclerView rcShow;
 
     ActivityResultLauncher<Intent>startCamera=registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -75,6 +79,7 @@ private ArrayList<User> Array;
         addPicture=view.findViewById(R.id.addP);
         showPic=view.findViewById(R.id.ImageV);
         addUser=view.findViewById(R.id.addUS);
+        rcShow=view.findViewById(R.id.rc);
 
 
         String myUser1  = getArguments().getString("myUser");//מביא נתונים
@@ -133,7 +138,21 @@ private ArrayList<User> Array;
    public void dbSelectUsers(){
     ArrayList<User> x=new ArrayList<>();
        DBHelper db=new DBHelper(getActivity());
-       x=db.selectAll();
+           x=db.selectAll();
+           showUsers(x);
+       //ShowUsers(ArrayList<User> users);
        int t=0;
      }
+
+    private void showUsers(ArrayList<User> x) {
+        ShowUsersAdapter showUsersAdapter=new ShowUsersAdapter(x, new InterOnItemClickListener() {
+            @Override
+            public void onItemClick(User item) {
+                Toast.makeText(getActivity(),item.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        rcShow.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rcShow.setAdapter(showUsersAdapter);
+        rcShow.setHasFixedSize(true);
+    }
 }

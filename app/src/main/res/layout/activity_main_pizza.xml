@@ -5,31 +5,35 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FFF8F0"
-    tools:context=".pizzaproject.MenuActivity">
+    tools:context=".pizzaproject.MainActivityPizza">
 
     <!-- Header -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:text="🍕 התפריט שלנו"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:background="#C0392B" />
+        android:orientation="horizontal"
+        android:background="#C0392B"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="16dp">
 
-    <!-- שדה חיפוש -->
-    <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="🔍 חפש פיצה..."
-        android:paddingHorizontal="16dp"
-        android:textSize="14sp"
-        android:background="#FFFFFF"
-        android:layout_margin="12dp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🍕 התפריט שלנו"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:gravity="center" />
 
-    <!-- רשימת פיצות -->
+        <ImageView
+            android:id="@+id/btnProfile"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/ic_default_profile" />
+
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -41,30 +45,32 @@
             android:orientation="vertical"
             android:padding="12dp">
 
-            <!-- כותרת קטגוריה -->
+            <!-- ===== קלאסיות ===== -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="קלאסיות"
+                android:text="הקלאסיות שלנו"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:textColor="#C0392B"
                 android:layout_marginBottom="8dp" />
 
-            <!-- פיצה 1 - מרגריטה -->
+            <!-- מוצרלה -->
             <LinearLayout
-                android:id="@+id/cardMargarita"
+                android:id="@+id/cardMozzarella"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:orientation="horizontal"
                 android:background="#FFFFFF"
                 android:padding="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/pizza_margarita"
+                    android:src="@drawable/classicPizza"
                     android:scaleType="centerCrop"
                     android:layout_marginEnd="12dp" />
 
@@ -78,7 +84,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="מרגריטה"
+                        android:text="מוצרלה"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="#1A1A1A" />
@@ -86,7 +92,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="עגבניה, גבינה"
+                        android:text="עגבניה, מוצרלה טרייה"
                         android:textSize="12sp"
                         android:textColor="#999999" />
 
@@ -101,31 +107,33 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btnEditMargarita"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnAddMozzarella"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="עריכה"
+                    android:text="🛒  הוסף לעגלה"
                     android:textSize="12sp"
-                    android:textColor="#C0392B"
-                    android:backgroundTint="#FFF0EE" />
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#C0392B" />
 
             </LinearLayout>
 
-            <!-- פיצה 2 - פפרוני -->
+            <!-- פיצה עבה -->
             <LinearLayout
-                android:id="@+id/cardPepperoni"
+                android:id="@+id/cardThick"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:orientation="horizontal"
                 android:background="#FFFFFF"
                 android:padding="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/pizza_pepperoni"
+                    android:src="@drawable/thickPizza"
                     android:scaleType="centerCrop"
                     android:layout_marginEnd="12dp" />
 
@@ -139,7 +147,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="פפרוני"
+                        android:text="פיצה עבה"
                         android:textSize="15sp"
                         android:textStyle="bold"
                         android:textColor="#1A1A1A" />
@@ -147,79 +155,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="פפרוני, גבינה"
-                        android:textSize="12sp"
-                        android:textColor="#999999" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₪55"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="#C0392B" />
-
-                </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnEditPepperoni"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="עריכה"
-                    android:textSize="12sp"
-                    android:textColor="#C0392B"
-                    android:backgroundTint="#FFF0EE" />
-
-            </LinearLayout>
-
-            <!-- כותרת קטגוריה -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="מיוחדות"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="#C0392B"
-                android:layout_marginBottom="8dp"
-                android:layout_marginTop="8dp" />
-
-            <!-- פיצה 3 - וגטריאן -->
-            <LinearLayout
-                android:id="@+id/cardVegetarian"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:orientation="horizontal"
-                android:background="#FFFFFF"
-                android:padding="10dp"
-                android:layout_marginBottom="10dp">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/pizza_vegetarian"
-                    android:scaleType="centerCrop"
-                    android:layout_marginEnd="12dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="וגטריאן"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ירקות, גבינה"
+                        android:text="בצק עבה ואוורירי"
                         android:textSize="12sp"
                         android:textColor="#999999" />
 
@@ -234,18 +170,155 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btnEditVegetarian"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnAddThick"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="עריכה"
+                    android:text="🛒  הוסף לעגלה"
                     android:textSize="12sp"
-                    android:textColor="#C0392B"
-                    android:backgroundTint="#FFF0EE" />
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#C0392B" />
 
             </LinearLayout>
 
-            <!-- פיצה 4 - ארבע גבינות -->
+            <!-- פיצה דקה -->
+            <LinearLayout
+                android:id="@+id/cardThin"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:background="#FFFFFF"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/thinPizza"
+                    android:scaleType="centerCrop"
+                    android:layout_marginEnd="12dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="פיצה דקה"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A1A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="בצק דק ופריך"
+                        android:textSize="12sp"
+                        android:textColor="#999999" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₪50"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#C0392B" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnAddThin"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="🛒  הוסף לעגלה"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#C0392B" />
+
+            </LinearLayout>
+
+            <!-- פיצה אישית -->
+            <LinearLayout
+                android:id="@+id/cardPersonal"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:background="#FFFFFF"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/littlePizza"
+                    android:scaleType="centerCrop"
+                    android:layout_marginEnd="12dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="פיצה אישית"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A1A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="בחר תוספות לפי טעמך"
+                        android:textSize="12sp"
+                        android:textColor="#999999" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₪25"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#C0392B" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnAddPersonal"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="🛒  הוסף לעגלה"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#C0392B" />
+
+            </LinearLayout>
+
+            <!-- ===== מיוחדות ===== -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="המיוחדות שלנו"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#C0392B"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="8dp" />
+
+            <!-- ארבע גבינות -->
             <LinearLayout
                 android:id="@+id/cardFourCheese"
                 android:layout_width="match_parent"
@@ -253,12 +326,14 @@
                 android:orientation="horizontal"
                 android:background="#FFFFFF"
                 android:padding="10dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true">
 
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/pizza_four_cheese"
+                    android:src="@drawable/fourCheesePizza"
                     android:scaleType="centerCrop"
                     android:layout_marginEnd="12dp" />
 
@@ -295,14 +370,266 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btnEditFourCheese"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/btnAddFourCheese"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="עריכה"
+                    android:backgroundTint="#C0392B"
+                    android:text="🛒  הוסף לעגלה"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <!-- אקסטרה גבינה -->
+            <LinearLayout
+                android:id="@+id/cardExtraCheese"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:background="#FFFFFF"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/extraCheesePizza"
+                    android:scaleType="centerCrop"
+                    android:layout_marginEnd="12dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="אקסטרה גבינה"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A1A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="גבינה, גבינה ועוד גבינה"
+                        android:textSize="12sp"
+                        android:textColor="#999999" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₪55"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#C0392B" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnAddExtraCheese"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="🛒  הוסף לעגלה"
                     android:textSize="12sp"
-                    android:textColor="#C0392B"
-                    android:backgroundTint="#FFF0EE" />
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#C0392B" />
+
+            </LinearLayout>
+
+            <!-- פיצה יוונית -->
+            <LinearLayout
+                android:id="@+id/cardGreek"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:background="#FFFFFF"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/greekPizza"
+                    android:scaleType="centerCrop"
+                    android:layout_marginEnd="12dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="פיצה יוונית"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A1A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="פטה, זיתים, עגבניה"
+                        android:textSize="12sp"
+                        android:textColor="#999999" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₪55"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#C0392B" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnAddGreek"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="🛒  הוסף לעגלה"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#C0392B" />
+
+            </LinearLayout>
+
+            <!-- ללא גלוטן -->
+            <LinearLayout
+                android:id="@+id/cardGlutenFree"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:background="#FFFFFF"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/glutenFreePizza"
+                    android:scaleType="centerCrop"
+                    android:layout_marginEnd="12dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ללא גלוטן"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A1A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="בצק ללא גלוטן, מתאים לצליאקים"
+                        android:textSize="12sp"
+                        android:textColor="#999999" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₪60"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#C0392B" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnAddGlutenFree"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="🛒  הוסף לעגלה"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#C0392B" />
+
+            </LinearLayout>
+
+            <!-- פיצה מרובעת -->
+            <LinearLayout
+                android:id="@+id/cardSquare"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:orientation="horizontal"
+                android:background="#FFFFFF"
+                android:padding="10dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/squarePizza"
+                    android:scaleType="centerCrop"
+                    android:layout_marginEnd="12dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="פיצה מרובעת"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        android:textColor="#1A1A1A" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="סיציליאנית קלאסית"
+                        android:textSize="12sp"
+                        android:textColor="#999999" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="₪55"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#C0392B" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnAddSquare"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="🛒  הוסף לעגלה"
+                    android:textSize="12sp"
+                    android:textColor="#FFFFFF"
+                    android:backgroundTint="#C0392B" />
 
             </LinearLayout>
 
@@ -322,3 +649,11 @@
         android:layout_margin="12dp" />
 
 </LinearLayout>
+
+
+
+
+
+
+
+

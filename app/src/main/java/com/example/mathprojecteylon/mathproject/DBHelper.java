@@ -109,7 +109,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
 
         // return all rows in table
-        public ArrayList<User> selectAll(){
+        public ArrayList<User>  selectAll(){
             database = getReadableDatabase(); // get access to read the database
             ArrayList<User> users = new ArrayList<>();
             Cursor cursor = database.query(TABLE_RECORD, allColumns, null, null, null, null, null); // cursor points at a certain row

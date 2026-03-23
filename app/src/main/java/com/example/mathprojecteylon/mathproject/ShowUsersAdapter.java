@@ -19,8 +19,8 @@ public class ShowUsersAdapter extends RecyclerView.Adapter
     private InterOnItemClickListener listener;
 
     // פעולה בונה
-    public ShowUsersAdapter(ArrayList<User> users,InterOnItemClickListener listener) {
-        this.usersList = usersList;
+    public ShowUsersAdapter(ArrayList<User> users, InterOnItemClickListener listener) {
+        this.usersList = users;
         this.listener = listener;
     }
 
@@ -31,23 +31,40 @@ public class ShowUsersAdapter extends RecyclerView.Adapter
                 .inflate(R.layout.item, parent, false);
         return new UserViewHolder(view);
     }
+
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder,int position){
-        holder.bind(usersList.get(position),listener);
+    public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
+        holder.bind(usersList.get(position), listener);
     }
+
     @Override
     public int getItemCount() {
         return usersList.size();
     }
-    public static class MyViewHolderextends RecyclerView.ViewHolder{
-        TextView tvUserName ;
+
+    public static class UserViewHolder extends RecyclerView.ViewHolder {
+        TextView tvUserName;
         TextView tvUserScore;
         ImageView ivUserImg;
-    }
-    public MyViewHolder(@NonNull View itemView) {
-        super(itemView);
-        tvUserName = itemView.findViewById(R.id.);
-        tvUserScore= itemView.findViewById()
-        ivUserImg = itemView.findViewById(R.id.ivImage);
+
+        public UserViewHolder(@NonNull View itemView) {
+            super(itemView);
+            tvUserName = itemView.findViewById(R.id.tvUserN);
+            tvUserScore = itemView.findViewById(R.id.tvScore);
+            ivUserImg = itemView.findViewById(R.id.ivImage);
+        }
+
+        public void bind(final User item, final InterOnItemClickListener
+                listener) {
+            tvUserName.setText(item.getName());
+            ivUserImg.setImageBitmap(item.getBitmap());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
+
+        }
     }
 }
