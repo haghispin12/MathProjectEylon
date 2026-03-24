@@ -27,7 +27,7 @@ private Button btnSignIn;
     btnManagerEnter.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent=new Intent(launcher2.this, ManagerLogIn.class);
+            Intent intent=new Intent(launcher2.this, MainActivityPizza.class);
             startActivity(intent);
         }
     });

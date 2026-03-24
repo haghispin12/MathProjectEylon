@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +28,16 @@ public class MainActivityPizza extends AppCompatActivity {
     private LinearLayout cardGreek;
     private LinearLayout cardGlutenFree;
     private LinearLayout cardSquare;
+    private Button btnAddMozzarella;
+    private Button btnAddThick;
+    private Button btnAddThin;
+    private Button btnAddPersonal;
+    private Button btnAddFourCheese;
+    private Button btnAddExtraCheese;
+    private Button btnAddGreek;
+    private Button btnAddGlutenFree;
+    private Button btnAddSquare;
+    private Pizza pizza;
 
 
     // כפתור תשלום
@@ -51,6 +62,15 @@ public class MainActivityPizza extends AppCompatActivity {
         cardSquare = findViewById(R.id.cardSquare);
         btnCheckout = findViewById(R.id.btnCheckout);
         btnProfile = findViewById(R.id.btnProfile);
+        btnAddMozzarella = findViewById(R.id.btnAddMozzarella);
+        btnAddThick = findViewById(R.id.btnAddThick);
+        btnAddThin = findViewById(R.id.btnAddThin);
+        btnAddPersonal = findViewById(R.id.btnAddPersonal);
+        btnAddFourCheese = findViewById(R.id.btnAddFourCheese);
+        btnAddExtraCheese = findViewById(R.id.btnAddExtraCheese);
+        btnAddGreek = findViewById(R.id.btnAddGreek);
+        btnAddGlutenFree = findViewById(R.id.btnAddGlutenFree);
+        btnAddSquare = findViewById(R.id.btnAddSquare);
         init();
 
         };
@@ -151,6 +171,109 @@ public class MainActivityPizza extends AppCompatActivity {
                 intent.putExtra("pizzaName","פיצה מרובעת");
                 intent.putExtra("pizzaImage","squarePizza");
                 intent.putExtra("pizzaPrice","55");
+                startActivity(intent);
+            }
+        });
+        btnAddMozzarella.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Buyer.currentBuyer = new Buyer("טסט", "טסט", "test@test.com", 1234, 1234, "כתובת", 050);
+                Pizza mozzarella=new Pizza(45,"M",null,"classicpizza.png");
+                Buyer.currentBuyer.addToCart(mozzarella);
+                Toast.makeText(MainActivityPizza.this, "פיצה מוצרלה נוספה לעגלה", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+        btnAddThick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Pizza thick=new Pizza(50,"M",null,"thickpizza.png");
+                Buyer.currentBuyer.addToCart(thick);
+                Toast.makeText(MainActivityPizza.this, "פיצה עבה נוספה לעגלה", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnAddThin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Pizza thin=new Pizza(50,"M",null,"thinpizza.png");
+                Buyer.currentBuyer.addToCart(thin);
+                Toast.makeText(MainActivityPizza.this, "פיצה דקה נוספה לעגלה", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        btnAddPersonal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Pizza personal=new Pizza(25,"M",null,"personapizza.png");
+                Buyer.currentBuyer.addToCart(personal);
+                Toast.makeText(MainActivityPizza.this, "פיצה אישית נוספה לעגלה", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+        btnAddFourCheese.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Pizza fourCheese=new Pizza(60,"M",null,"fourcheesepizza.png");
+                Buyer.currentBuyer.addToCart(fourCheese);
+                Toast.makeText(MainActivityPizza.this, "פיצה ארבע גבינות נוספה לעגלה", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+        btnAddExtraCheese.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Pizza extraCheese=new Pizza(55,"M",null,"extracheese.png");
+                Buyer.currentBuyer.addToCart(extraCheese);
+                Toast.makeText(MainActivityPizza.this, "פיצה אקסטרה גבינה נוספה לעגלה", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+        btnAddGreek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Pizza greek=new Pizza(55,"M",null,"greekpizza.png");
+                Buyer.currentBuyer.addToCart(greek);
+                Toast.makeText(MainActivityPizza.this, "פיצה יוונית נוספה לעגלה", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+        btnAddGlutenFree.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Pizza glutenFree=new Pizza(60,"M",null,"glutenfreepizza.png");
+                Buyer.currentBuyer.addToCart(glutenFree);
+                Toast.makeText(MainActivityPizza.this, "פיצה ללא גלוטן נוספה לעגלה", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+
+        btnAddSquare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Pizza square =new Pizza(55,"M",null,"squarepizza.png");
+                Buyer.currentBuyer.addToCart(square);
+                Toast.makeText(MainActivityPizza.this, "פיצה מרובעת נוספה לעגלה", Toast.LENGTH_SHORT).show();
+
+
+            }
+        });
+        btnCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivityPizza.this, cart2.class);
                 startActivity(intent);
             }
         });

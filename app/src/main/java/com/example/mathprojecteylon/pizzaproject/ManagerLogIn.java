@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,9 +34,20 @@ public class ManagerLogIn extends AppCompatActivity {
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            Intent intent = new Intent(ManagerLogIn.this, MainActivityManager.class);
-            intent.putExtra("name","Manager");
-            startActivity(intent);
+                String ps=password.getText().toString();
+            if (userName.getText().toString().equals("manager")){
+            if (ps.equals(5230)){
+                Intent intent = new Intent(ManagerLogIn.this, MainActivityManager.class);
+                intent.putExtra("name","Manager");
+                startActivity(intent);
+            }
+            }
+            else {
+                Toast.makeText(ManagerLogIn.this, "כניסה שגויה נסה שנית", Toast.LENGTH_SHORT).show();
+
+            }
+
+
 
 
             }

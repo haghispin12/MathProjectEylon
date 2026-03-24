@@ -6,8 +6,9 @@ public class Buyer extends User{
     private String adress;
     private int phoneNum;
     private ArrayList<Pizza> cart;
+    public static Buyer currentBuyer;
     public Buyer(String firstName, String lastName,String email,int pass,int passConiform,String adress,int phoneNum
-    ,ArrayList<Pizza> cart) {
+    ) {
         super(firstName, lastName, email, pass, passConiform);
         this.adress = adress;
         this.phoneNum = phoneNum;

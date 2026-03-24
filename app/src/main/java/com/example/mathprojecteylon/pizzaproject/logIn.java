@@ -42,6 +42,13 @@ public class logIn extends AppCompatActivity {
          for(User u:User.users ){
              String t=u.getPassS()+"";
              if(u.getEmailS().equals(emaiL)&&t.equals(password)){
+                 Buyer.currentBuyer = new Buyer(u.getFirstNameS(),
+                         u.getLastNameS(),
+                         u.getEmailS(),
+                         u.getPassS(),
+                         u.getPassConfiormS(),
+                         "",    // כתובת
+                         0 );     // טלפון
                  Intent intent = new Intent(logIn.this, MainActivityPizza.class);
                  startActivity(intent);
              }

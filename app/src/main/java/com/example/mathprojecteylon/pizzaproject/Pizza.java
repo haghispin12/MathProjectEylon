@@ -6,13 +6,16 @@ public class Pizza {
     private int price;
     private String size;
     private ArrayList<String> extras;
+    private String imageName;
 
 
-    public Pizza(int price, String size, ArrayList<String> extras) {
+    public Pizza(int price, String size, ArrayList<String> extras, String imageName) {
         this.price = price;
         this.size = size;
         this.extras = extras;
+        this.imageName = imageName;
     }
+
     public int getPrice() {
         return price;
     }
@@ -35,5 +38,13 @@ public class Pizza {
 
     public void setExtras(ArrayList<String> extras) {
         this.extras = extras;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName=imageName;
     }
 }
