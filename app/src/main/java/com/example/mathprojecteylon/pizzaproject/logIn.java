@@ -25,10 +25,10 @@ public class logIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-        userN.findViewById(R.id.etUsername);
-        email.findViewById(R.id.etEmail);
-        pass.findViewById(R.id.etPassword);
-        enter.findViewById(R.id.btnLogin);
+        userN = findViewById(R.id.etUsername);
+        email = findViewById(R.id.etEmail);
+        pass = findViewById(R.id.etPassword);
+        enter = findViewById(R.id.btnLogin);
         init();
         ;
     }
@@ -37,11 +37,11 @@ public class logIn extends AppCompatActivity {
    enter.setOnClickListener(new View.OnClickListener() {
        @Override
        public void onClick(View view) {
-       String userName =userN.getText().toString();
+       String emaiL =email.getText().toString();
        String password=pass.getText().toString();
          for(User u:User.users ){
              String t=u.getPassS()+"";
-             if(u.getUserNS().equals(userName)&&t.equals(password)){
+             if(u.getEmailS().equals(emaiL)&&t.equals(password)){
                  Intent intent = new Intent(logIn.this, MainActivityPizza.class);
                  startActivity(intent);
              }

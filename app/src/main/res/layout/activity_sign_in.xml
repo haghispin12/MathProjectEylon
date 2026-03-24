@@ -71,17 +71,6 @@
             android:textSize="15sp"
             android:layout_marginBottom="16dp" />
 
-        <!-- שדה שם משתמש -->
-        <EditText
-            android:id="@+id/etUsername"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:hint="שם משתמש"
-            android:inputType="text"
-            android:paddingHorizontal="16dp"
-            android:textSize="15sp"
-            android:layout_marginBottom="16dp" />
-
         <!-- שדה אימייל -->
         <EditText
             android:id="@+id/etEmail"

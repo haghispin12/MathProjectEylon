@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp"
+    android:background="#1A1A2E"
+    tools:context=".pizzaproject.ManagerLogIn">
+
+    <!-- אייקון מנהל -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="👔"
+        android:textSize="64sp"
+        android:layout_marginBottom="16dp" />
+
+    <!-- כותרת -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="כניסת מנהלים"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="#E2B96F"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Admin Access Only"
+        android:textSize="13sp"
+        android:textColor="#888888"
+        android:letterSpacing="0.2"
+        android:layout_marginBottom="48dp" />
+
+    <!-- שדה שם משתמש -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="שם משתמש"
+        android:textSize="12sp"
+        android:textColor="#E2B96F"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/etAdminUsername"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:hint="הכנס שם משתמש"
+        android:inputType="text"
+        android:paddingHorizontal="16dp"
+        android:textSize="15sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="20dp" />
+
+    <!-- שדה סיסמה -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="סיסמה"
+        android:textSize="12sp"
+        android:textColor="#E2B96F"
+        android:layout_marginBottom="6dp" />
+
+    <EditText
+        android:id="@+id/etAdminPassword"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:hint="הכנס סיסמה"
+        android:inputType="textPassword"
+        android:paddingHorizontal="16dp"
+        android:textSize="15sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="36dp" />
+
+    <!-- כפתור כניסה -->
+    <Button
+        android:id="@+id/btnAdminLogin"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="כניסה למערכת"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#1A1A2E"
+        android:backgroundTint="#E2B96F" />
+
+</LinearLayout>
