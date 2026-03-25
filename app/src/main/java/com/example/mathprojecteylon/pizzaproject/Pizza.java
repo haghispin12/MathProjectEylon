@@ -4,13 +4,15 @@ import java.util.ArrayList;
 
 public class Pizza {
     private int price;
+    private String name;
     private String size;
     private ArrayList<String> extras;
     private String imageName;
 
 
-    public Pizza(int price, String size, ArrayList<String> extras, String imageName) {
+    public Pizza(int price,String name, String size, ArrayList<String> extras, String imageName) {
         this.price = price;
+        this.name=name;
         this.size = size;
         this.extras = extras;
         this.imageName = imageName;
@@ -46,5 +48,13 @@ public class Pizza {
 
     public void setImageName(String imageName) {
         this.imageName=imageName;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
