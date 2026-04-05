@@ -31,10 +31,10 @@
 
     <!-- שדה שם משתמש -->
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etEmail"
         android:layout_width="match_parent"
         android:layout_height="52dp"
-        android:hint="שם משתמש"
+        android:hint="email"
         android:inputType="text"
         android:paddingHorizontal="16dp"
         android:textSize="18sp"

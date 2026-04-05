@@ -8,29 +8,35 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mathprojecteylon.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class logIn extends AppCompatActivity {
     private EditText userN;
-    private EditText email;
+    private EditText Email;
     private EditText pass;
     private Button enter;
+    private FirebaseAuth auth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
-        userN = findViewById(R.id.etUsername);
-        email = findViewById(R.id.etEmail);
+        Email = findViewById(R.id.etEmail);
         pass = findViewById(R.id.etPassword);
         enter = findViewById(R.id.btnLogin);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
         init();
         ;
     }
@@ -39,25 +45,29 @@ public class logIn extends AppCompatActivity {
    enter.setOnClickListener(new View.OnClickListener() {
        @Override
        public void onClick(View view) {
-       String emaiL =email.getText().toString();
+       String email =Email.getText().toString();
        String password=pass.getText().toString();
-         for(User u:User.users ){
-             String t=u.getPassS()+"";
-             if(u.getEmailS().equals(emaiL)&&t.equals(password)){
-                 Buyer.currentBuyer = new Buyer(u.getFirstNameS(),
-                         u.getLastNameS(),
-                         u.getEmailS(),
-                         u.getPassS(),
-                         u.getPassConfiormS(),
-                         "",    // כתובת
-                         0 );     // טלפון
-                 Intent intent = new Intent(logIn.this, MainActivityPizza.class);
-                 startActivity(intent);
-             }
-             else {
-                 Toast.makeText(logIn.this, "סיסמה שגויה נסה שוב", Toast.LENGTH_SHORT).show();
-             }
-}
+       auth.signInWithEmailAndPassword(email,password)
+               .addOnCompleteListener(logIn.this, new OnCompleteListener<AuthResult>() {
+                   @Override
+                   public void onComplete(@NonNull Task<AuthResult> task) {
+                       if (task.isSuccessful()){
+                           Toast.makeText(logIn.this,"ברוך הבא",
+                                   Toast.LENGTH_SHORT).show();
+                           Intent intent = new Intent(logIn.this, MainActivityPizza.class);
+                           startActivity(intent);
+
+                       }
+                       else {
+                           Toast.makeText(logIn.this, "סיסמה שגויה נסה שוב", Toast.LENGTH_SHORT).show();
+
+                       }
+                   }
+               });
+
+
+
+
        }
    });
     }
