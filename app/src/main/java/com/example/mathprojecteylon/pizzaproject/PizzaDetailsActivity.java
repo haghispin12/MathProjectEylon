@@ -201,7 +201,7 @@ public class PizzaDetailsActivity extends AppCompatActivity {
                  }
              }
          });
-         cbBlaclOlive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+         cbBlacklOlive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
              @Override
              public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                  if (isChecked) {

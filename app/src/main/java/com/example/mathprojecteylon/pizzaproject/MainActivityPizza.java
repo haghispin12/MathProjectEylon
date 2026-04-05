@@ -84,7 +84,6 @@ public class MainActivityPizza extends AppCompatActivity {
                 intent.putExtra("pizzaPrice","45");
                 startActivity(intent);
 
-
             }
         });
         cardThick.setOnClickListener(new View.OnClickListener() {

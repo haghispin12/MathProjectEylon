@@ -9,12 +9,19 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mathprojecteylon.R;
+import com.example.mathprojecteylon.mathproject.LoginActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignIn extends AppCompatActivity {
 
@@ -27,7 +34,8 @@ public class SignIn extends AppCompatActivity {
     private EditText passConfiormS;
 
     private Button registerS;
-
+    private FirebaseAuth auth;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,8 @@ public class SignIn extends AppCompatActivity {
         passS = findViewById(R.id.etPassword);
         passConfiormS = findViewById(R.id.etPasswordConfirm);
         registerS = findViewById(R.id.btnRegister);
+        db = FirebaseFirestore.getInstance();
+        auth=FirebaseAuth.getInstance();
         init();
 
     }
@@ -50,30 +60,27 @@ public class SignIn extends AppCompatActivity {
              @Override
              public void onClick(View view) {
                  String email = emailS.getText().toString();
-                 SharedPreferences sharedPreferences = getSharedPreferences("users", MODE_PRIVATE);
-                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                 editor.putString("email", emailS.getText().toString());
-                 editor.putInt("password", Integer.parseInt(passS.getText().toString()));
-                 editor.apply();
-                 String savedEmail = sharedPreferences.getString("email", "");
-                 if (savedEmail.equals(email)) {
-                     Toast.makeText(SignIn.this, "שם המשתמש כבר קיים!", Toast.LENGTH_SHORT).show();
-                 } else {
-                     // אימייל חדש — אפשר להירשם
+                 String password = passS.getText().toString();
+                 auth.createUserWithEmailAndPassword(email, password)
+                         .addOnCompleteListener(SignIn.this, new OnCompleteListener<AuthResult>() {
+                             @Override
+                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                 if (task.isSuccessful()) {
+                                     Toast.makeText(SignIn.this, "Registiration success.",
+                                             Toast.LENGTH_SHORT).show();
+                                     Intent intent = new Intent(SignIn.this, logIn.class);
+                                     startActivity(intent);
+                                 } else {
+                                     Toast.makeText(SignIn.this, "registartion failed.",
+                                             Toast.LENGTH_SHORT).show();
+                                 }
+                             }
+                         });
 
 
-                     // יוצרים משתמש חדש ומוסיפים לרשימה
-                     User newUser = new User(FirstNameS.getText().toString(),
-                             LastNameS.getText().toString(),
-                             emailS.getText().toString(),
-                             Integer.parseInt(passS.getText().toString()),
-                             Integer.parseInt(passConfiormS.getText().toString()));
-
-                     User.users.add(newUser);
-                     Intent intent = new Intent(SignIn.this, logIn.class);
-                     startActivity(intent);
-                 }
              }
+
+
      });
 
              }

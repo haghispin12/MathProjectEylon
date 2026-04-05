@@ -14,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mathprojecteylon.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class logIn extends AppCompatActivity {
     private EditText userN;
@@ -29,6 +30,7 @@ public class logIn extends AppCompatActivity {
         email = findViewById(R.id.etEmail);
         pass = findViewById(R.id.etPassword);
         enter = findViewById(R.id.btnLogin);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
         init();
         ;
     }

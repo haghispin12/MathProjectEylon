@@ -9,12 +9,15 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mathprojecteylon.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class launcher extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        int n =10;
 
         new Handler().postDelayed(new Runnable() {//מסך פתיחה מעביר למסך הבא
             @Override

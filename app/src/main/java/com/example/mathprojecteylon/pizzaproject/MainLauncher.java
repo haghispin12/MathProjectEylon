@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mathprojecteylon.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainLauncher extends AppCompatActivity {
 
@@ -18,6 +19,8 @@ public class MainLauncher extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        int n =10;
 
         new Handler().postDelayed(new Runnable() {//מסך פתיחה מעביר למסך הבא
             @Override
