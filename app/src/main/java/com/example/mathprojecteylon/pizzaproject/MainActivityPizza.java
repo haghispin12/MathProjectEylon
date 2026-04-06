@@ -79,7 +79,8 @@ public class MainActivityPizza extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivityPizza.this, PizzaDetailsActivity.class);
                 intent.putExtra("pizzaName","מוצרלה");
-                intent.putExtra("pizzaImage","classicPizza");
+                intent.putExtra("pizzaImage","classicpizza");
+                int x=0;
                 intent.putExtra("pizzaPrice","45");
                 startActivity(intent);
 
@@ -90,7 +91,7 @@ public class MainActivityPizza extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
                 intent.putExtra("pizzaName","פיצה עבה");
-                intent.putExtra("pizzaImage","thickPizza");
+                intent.putExtra("pizzaImage","thickpizza");
                 intent.putExtra("pizzaPrice","50");
                 startActivity(intent);
 
@@ -101,7 +102,7 @@ public class MainActivityPizza extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
                 intent.putExtra("pizzaName","פיצה דקה");
-                intent.putExtra("pizzaImage","thinPizza");
+                intent.putExtra("pizzaImage","thinpizza");
                 intent.putExtra("pizzaPrice","50");
                 startActivity(intent);
             }
@@ -111,7 +112,7 @@ public class MainActivityPizza extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
                 intent.putExtra("pizzaName","פיצה אישית");
-                intent.putExtra("pizzaImage","personalPizza");
+                intent.putExtra("pizzaImage","personalpizza");
                 intent.putExtra("pizzaPrice","25");
                 startActivity(intent);
 
@@ -122,7 +123,7 @@ public class MainActivityPizza extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
                 intent.putExtra("pizzaName","ארבע גבינות");
-                intent.putExtra("pizzaImage","fourCheesePizza");
+                intent.putExtra("pizzaImage","fourcheesepizza");
                 intent.putExtra("pizzaPrice","60");
                 startActivity(intent);
 
@@ -133,7 +134,7 @@ public class MainActivityPizza extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
                 intent.putExtra("pizzaName","אקסטרה גבינה");
-                intent.putExtra("pizzaImage","extraCheesePizza");
+                intent.putExtra("pizzaImage","extracheesepizza");
                 intent.putExtra("pizzaPrice","55");
                 startActivity(intent);
 
@@ -144,7 +145,7 @@ public class MainActivityPizza extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
                 intent.putExtra("pizzaName","פיצה יוונית");
-                intent.putExtra("pizzaImage","greekPizza");
+                intent.putExtra("pizzaImage","greekpizza");
                 intent.putExtra("pizzaPrice","55");
                 startActivity(intent);
 
@@ -155,7 +156,7 @@ public class MainActivityPizza extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
                 intent.putExtra("pizzaName","ללא גלוטן");
-                intent.putExtra("pizzaImage","glutenFreePizza");
+                intent.putExtra("pizzaImage","glutenfreepizza");
                 intent.putExtra("pizzaPrice","60");
                 startActivity(intent);
 
@@ -167,7 +168,7 @@ public class MainActivityPizza extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
                 intent.putExtra("pizzaName","פיצה מרובעת");
-                intent.putExtra("pizzaImage","squarePizza");
+                intent.putExtra("pizzaImage","squarepizza");
                 intent.putExtra("pizzaPrice","55");
                 startActivity(intent);
             }
@@ -176,7 +177,7 @@ public class MainActivityPizza extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Buyer.currentBuyer = new Buyer("טסט", "טסט", "test@test.com", 1234, 1234, "כתובת", 050);
-                Pizza mozzarella=new Pizza(45,"pizzaMozzarella","M",null,"classicpizza.png");
+                Pizza mozzarella=new Pizza(45,"pizzaMozzarella","M",null,"classicpizza");
                 Buyer.currentBuyer.addToCart(mozzarella);
                 Toast.makeText(MainActivityPizza.this, "פיצה מוצרלה נוספה לעגלה", Toast.LENGTH_SHORT).show();
 
@@ -187,7 +188,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddThick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza thick=new Pizza(50,"pizzaThick","M",null,"thickpizza.png");
+                Pizza thick=new Pizza(50,"pizzaThick","M",null,"thickpizza");
                 Buyer.currentBuyer.addToCart(thick);
                 Toast.makeText(MainActivityPizza.this, "פיצה עבה נוספה לעגלה", Toast.LENGTH_SHORT).show();
             }
@@ -196,7 +197,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddThin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza thin=new Pizza(50,"pizzaThin","M",null,"thinpizza.png");
+                Pizza thin=new Pizza(50,"pizzaThin","M",null,"thinpizza");
                 Buyer.currentBuyer.addToCart(thin);
                 Toast.makeText(MainActivityPizza.this, "פיצה דקה נוספה לעגלה", Toast.LENGTH_SHORT).show();
 
@@ -206,7 +207,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddPersonal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza personal=new Pizza(25,"pizzaPersonal","M",null,"personapizza.png");
+                Pizza personal=new Pizza(25,"pizzaPersonal","M",null,"personapizza");
                 Buyer.currentBuyer.addToCart(personal);
                 Toast.makeText(MainActivityPizza.this, "פיצה אישית נוספה לעגלה", Toast.LENGTH_SHORT).show();
 
@@ -217,7 +218,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddFourCheese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza fourCheese=new Pizza(60,"pizzaFourCheese","M",null,"fourcheesepizza.png");
+                Pizza fourCheese=new Pizza(60,"pizzaFourCheese","M",null,"fourcheesepizza");
                 Buyer.currentBuyer.addToCart(fourCheese);
                 Toast.makeText(MainActivityPizza.this, "פיצה ארבע גבינות נוספה לעגלה", Toast.LENGTH_SHORT).show();
 
@@ -228,7 +229,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddExtraCheese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza extraCheese=new Pizza(55,"pizzaExtraCheese","M",null,"extracheese.png");
+                Pizza extraCheese=new Pizza(55,"pizzaExtraCheese","M",null,"extracheese");
                 Buyer.currentBuyer.addToCart(extraCheese);
                 Toast.makeText(MainActivityPizza.this, "פיצה אקסטרה גבינה נוספה לעגלה", Toast.LENGTH_SHORT).show();
 
@@ -239,7 +240,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddGreek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza greek=new Pizza(55,"pizzaGreek","M",null,"greekpizza.png");
+                Pizza greek=new Pizza(55,"pizzaGreek","M",null,"greekpizza");
                 Buyer.currentBuyer.addToCart(greek);
                 Toast.makeText(MainActivityPizza.this, "פיצה יוונית נוספה לעגלה", Toast.LENGTH_SHORT).show();
 
@@ -250,7 +251,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddGlutenFree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza glutenFree=new Pizza(60,"pizzaGlutenFree","M",null,"glutenfreepizza.png");
+                Pizza glutenFree=new Pizza(60,"pizzaGlutenFree","M",null,"glutenfreepizza");
                 Buyer.currentBuyer.addToCart(glutenFree);
                 Toast.makeText(MainActivityPizza.this, "פיצה ללא גלוטן נוספה לעגלה", Toast.LENGTH_SHORT).show();
 
@@ -261,7 +262,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddSquare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza square =new Pizza(55,"pizzaSquare","M",null,"squarepizza.png");
+                Pizza square =new Pizza(55,"pizzaSquare","M",null,"squarepizza");
                 Buyer.currentBuyer.addToCart(square);
                 Toast.makeText(MainActivityPizza.this, "פיצה מרובעת נוספה לעגלה", Toast.LENGTH_SHORT).show();
 

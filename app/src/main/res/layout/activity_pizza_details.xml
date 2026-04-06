@@ -302,10 +302,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="סה״כ לתשלום:"
+                    android:textColor="#1A1A1A"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#1A1A1A" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tvTotalPrice"

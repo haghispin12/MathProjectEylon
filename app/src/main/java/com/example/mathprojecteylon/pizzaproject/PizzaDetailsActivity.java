@@ -15,6 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mathprojecteylon.R;
 
+import java.util.ArrayList;
+
 public class PizzaDetailsActivity extends AppCompatActivity {
     private Button btnBack;
     private TextView tvPizzaTitle;
@@ -41,6 +43,10 @@ public class PizzaDetailsActivity extends AppCompatActivity {
     private String pizzaImage;
     private int basePrice;
     private int totalPrice;
+    private int sizePrice;
+    private ArrayList<String> extras = new ArrayList<>();
+    private String size;
+    private int extrasPrice;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +74,12 @@ public class PizzaDetailsActivity extends AppCompatActivity {
         btnAddToCart = findViewById(R.id.btnAddToCart);
         pizzaName = getIntent().getStringExtra("pizzaName");
         pizzaImage = getIntent().getStringExtra("pizzaImage");
-        basePrice = Integer.parseInt("pizzaPrice");
-        totalPrice=basePrice;
+        basePrice = Integer.parseInt(getIntent().getStringExtra("pizzaPrice"));
+        size="M";
+        sizePrice=basePrice;
+        int id = getResources().getIdentifier(pizzaImage, "drawable", getPackageName());
+        ivPizzaImage.setImageResource(id);
+
         init();
 
         };
@@ -86,22 +96,24 @@ public class PizzaDetailsActivity extends AppCompatActivity {
              public void onCheckedChanged(RadioGroup group, int checkedId) {
 
                  if (checkedId == R.id.rbSmall) {
-                     totalPrice=basePrice-10;
-                     tvTotalPrice.setText(totalPrice+"סך הכול לתשלום:");
+                     sizePrice=basePrice-10;
+                     size="S";
                      // בחר S
                  } else if (checkedId == R.id.rbMedium) {
-                     totalPrice=basePrice;
-                     tvTotalPrice.setText(totalPrice+"סך הכול לתשלום:");
+                     sizePrice=basePrice;
+                     size="M";
                      // בחר M
                  } else if (checkedId == R.id.rbLarge) {
-                     totalPrice=basePrice+10;
-                     tvTotalPrice.setText(totalPrice+"סך הכול לתשלום:");
+                     sizePrice=basePrice+10;
+                     size="L";
                      // בחר L
                  } else if (checkedId == R.id.rbXLarge) {
-                     totalPrice=basePrice+20;
-                     tvTotalPrice.setText(totalPrice+"סך הכול לתשלום:");
+                     sizePrice=basePrice+20;
+                     size="XL";
                      // בחר XL
                  }
+                 totalPrice=sizePrice+extrasPrice;
+                 tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
 
              }
          });
@@ -109,11 +121,19 @@ public class PizzaDetailsActivity extends AppCompatActivity {
              @Override
              public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                  if (isChecked) {
-                     totalPrice=totalPrice+5;
+                     extrasPrice=extrasPrice+5;
+                     totalPrice=extrasPrice+sizePrice;
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
+                     extras.add("tomato");
+
                      // נסמן — הוסף למחיר
                  } else {
-                     totalPrice=totalPrice;
-                     // בוטל — הורד מהמחיר
+
+                     extrasPrice=extrasPrice-5;
+                     totalPrice=sizePrice+extrasPrice;
+                     extras.remove("tomato");
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
+
                  }
              }
          });
@@ -121,11 +141,17 @@ public class PizzaDetailsActivity extends AppCompatActivity {
              @Override
              public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                  if (isChecked) {
-                     totalPrice=totalPrice+5;
+                     extrasPrice=extrasPrice+5;
+                     totalPrice=extrasPrice+sizePrice;
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
+                     extras.add("corn");
+
                      // נסמן — הוסף למחיר
                  } else {
-                     totalPrice=totalPrice;
-                     // בוטל — הורד מהמחיר
+                     extrasPrice=extrasPrice-5;
+                     totalPrice=sizePrice+extrasPrice;
+                     extras.remove("corn");
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
                  }
              }
          });
@@ -133,11 +159,17 @@ public class PizzaDetailsActivity extends AppCompatActivity {
              @Override
              public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                  if (isChecked) {
-                     totalPrice=totalPrice+5;
+                     extrasPrice=extrasPrice+5;
+                     totalPrice=extrasPrice+sizePrice;
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
+                     extras.add("olives");
+
                      // נסמן — הוסף למחיר
                  } else {
-                     totalPrice=totalPrice;
-                     // בוטל — הורד מהמחיר
+                     extrasPrice=extrasPrice-5;
+                     totalPrice=sizePrice+extrasPrice;
+                     extras.remove("olives");
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
                  }
              }
          });
@@ -145,11 +177,17 @@ public class PizzaDetailsActivity extends AppCompatActivity {
              @Override
              public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                  if (isChecked) {
-                     totalPrice=totalPrice+5;
+                     extrasPrice=extrasPrice+5;
+                     totalPrice=extrasPrice+sizePrice;
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
+                     extras.add("mushrooms");
+
                      // נסמן — הוסף למחיר
                  } else {
-                     totalPrice=totalPrice;
-                     // בוטל — הורד מהמחיר
+                     extrasPrice=extrasPrice-5;
+                     totalPrice=sizePrice+extrasPrice;
+                     extras.remove("mushrooms");
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
                  }
              }
          });
@@ -157,11 +195,16 @@ public class PizzaDetailsActivity extends AppCompatActivity {
              @Override
              public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                  if (isChecked) {
-                     totalPrice=totalPrice+5;
+                     extrasPrice=extrasPrice+5;
+                     totalPrice=extrasPrice+sizePrice;
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
+                     extras.add("pepper");
                      // נסמן — הוסף למחיר
                  } else {
-                     totalPrice=totalPrice;
-                     // בוטל — הורד מהמחיר
+                     extrasPrice=extrasPrice-5;
+                     totalPrice=sizePrice+extrasPrice;
+                     extras.remove("pepper");
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
                  }
              }
          });
@@ -169,11 +212,16 @@ public class PizzaDetailsActivity extends AppCompatActivity {
              @Override
              public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                  if (isChecked) {
-                     totalPrice=totalPrice+5;
+                     extrasPrice=extrasPrice+5;
+                     totalPrice=extrasPrice+sizePrice;
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
+                     extras.add("onion");
                      // נסמן — הוסף למחיר
                  } else {
-                     totalPrice=totalPrice;
-                     // בוטל — הורד מהמחיר
+                     extrasPrice=extrasPrice-5;
+                     totalPrice=sizePrice+extrasPrice;
+                     extras.remove("onion");
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
                  }
              }
          });
@@ -181,36 +229,60 @@ public class PizzaDetailsActivity extends AppCompatActivity {
              @Override
              public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                  if (isChecked) {
-                     totalPrice=totalPrice+6;
+                     extrasPrice=extrasPrice+6;
+                     totalPrice=extrasPrice+sizePrice;
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
+                     extras.add("pineapple");
                      // נסמן — הוסף למחיר
                  } else {
-                     totalPrice=totalPrice;
-                     // בוטל — הורד מהמחיר
-                 }
+                     extrasPrice=extrasPrice-6;
+                     totalPrice=sizePrice+extrasPrice;
+                     extras.remove("pineapple");
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);                 }
              }
          });
          cbTuna.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
              @Override
              public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                  if (isChecked) {
-                     totalPrice=totalPrice+8;
+                     extrasPrice=extrasPrice+8;
+                     totalPrice=extrasPrice+sizePrice;
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
+                     extras.add("tunaFish");
                      // נסמן — הוסף למחיר
                  } else {
-                     totalPrice=totalPrice;
-                     // בוטל — הורד מהמחיר
-                 }
+                     extrasPrice=extrasPrice-8;
+                     totalPrice=sizePrice+extrasPrice;
+                     extras.remove("tunaFish");
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);                 }
              }
          });
          cbBlacklOlive.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
              @Override
              public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                  if (isChecked) {
-                     totalPrice=totalPrice+5;
+                     extrasPrice=extrasPrice+5;
+                     totalPrice=extrasPrice+sizePrice;
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);
+                     extras.add("blackOlive");
                      // נסמן — הוסף למחיר
                  } else {
-                     totalPrice=totalPrice;
-                     // בוטל — הורד מהמחיר
-                 }
+                     extrasPrice=extrasPrice-5;
+                     totalPrice=sizePrice+extrasPrice;
+                     extras.remove("blackOlive");
+                     tvTotalPrice.setText("סך הכול לתשלום: ₪" + totalPrice);                 }
+             }
+         });
+         btnAddToCart.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 Intent intent=new Intent(PizzaDetailsActivity.this, cart2.class);
+                 intent.putExtra("totalPrice",totalPrice);
+                 intent.putExtra("pizzaName",pizzaName);
+                 intent.putExtra("pizzaImage",pizzaImage);
+                 intent.putExtra("pizzaSize",size);
+                 intent.putExtra("pizzaExtras",extras);
+                 startActivity(intent);
              }
          });
 
