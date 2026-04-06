@@ -1,6 +1,9 @@
 package com.example.mathprojecteylon.pizzaproject;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mathprojecteylon.R;
 
 public class cart2 extends AppCompatActivity {
+    private Button pay;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +27,17 @@ public class cart2 extends AppCompatActivity {
         cartAdapter adapter = new cartAdapter(Buyer.currentBuyer.getCart());
         recyclerCart.setLayoutManager(new LinearLayoutManager(this));
         recyclerCart.setAdapter(adapter);
+        pay=findViewById(R.id.btnCheckout);
+        init();
+
+    }
+    public void init(){
+        pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                order.orders.add(Buyer.currentBuyer);
+                Toast.makeText(cart2.this, "ההזמנה התקבלה!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

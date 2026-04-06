@@ -61,7 +61,6 @@ public class MainActivityPizza extends AppCompatActivity {
         cardGlutenFree = findViewById(R.id.cardGlutenFree);
         cardSquare = findViewById(R.id.cardSquare);
         btnCheckout = findViewById(R.id.btnCheckout);
-        btnProfile = findViewById(R.id.btnProfile);
         btnAddMozzarella = findViewById(R.id.btnAddMozzarella);
         btnAddThick = findViewById(R.id.btnAddThick);
         btnAddThin = findViewById(R.id.btnAddThin);
