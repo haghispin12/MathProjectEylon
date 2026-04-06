@@ -22,8 +22,8 @@
 
             <Button
                 android:id="@+id/btnBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="120dp"
+                android:layout_height="75dp"
                 android:text="→ חזרה"
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#C0392B"
@@ -34,7 +34,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="שם הפיצה"
+                android:text="פרטי הפיצה"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="#FFFFFF"
@@ -73,14 +73,6 @@
                     android:textStyle="bold"
                     android:textColor="#1A1A1A" />
 
-                <TextView
-                    android:id="@+id/tvPizzaPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="₪0"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="#C0392B" />
 
             </LinearLayout>
 

@@ -285,6 +285,7 @@ public class PizzaDetailsActivity extends AppCompatActivity {
                  startActivity(intent);
              }
          });
+         tvPizzaName.setText(pizzaName);
 
 
 
