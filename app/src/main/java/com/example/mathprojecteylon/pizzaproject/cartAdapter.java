@@ -34,6 +34,7 @@ public class cartAdapter extends RecyclerView.Adapter<cartAdapter.CartViewHolder
             tvPizzaExtras = itemView.findViewById(R.id.tvPizzaExtras);
             btnDelete = itemView.findViewById(R.id.btnDelete);
         }
+
     }
 
     @Override
@@ -54,10 +55,20 @@ public class cartAdapter extends RecyclerView.Adapter<cartAdapter.CartViewHolder
         holder.tvPizzaPrice.setText("₪" + pizza.getPrice());
         holder.tvPizzaSize.setText(pizza.getSize());
         holder.tvPizzaExtras.setText(pizza.getExtras().toString());
+
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos = holder.getAdapterPosition();
+                cart.remove(pos);
+                notifyItemRemoved(pos);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return cart.size();
     }
+
 }

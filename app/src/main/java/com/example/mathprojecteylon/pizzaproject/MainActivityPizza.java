@@ -43,8 +43,7 @@ public class MainActivityPizza extends AppCompatActivity {
     // כפתור תשלום
     private Button btnCheckout;
 
-    // כפתור פרופיל
-    private ImageView btnProfile;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -273,7 +272,9 @@ public class MainActivityPizza extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivityPizza.this, cart2.class);
+                int x=1;
                 startActivity(intent);
+                int y=0;
             }
         });
     }

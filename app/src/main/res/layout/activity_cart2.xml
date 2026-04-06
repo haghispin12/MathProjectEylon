@@ -19,9 +19,9 @@
 
         <Button
             android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:text="→"
+            android:text="→חזור לתפריט"
             android:textColor="#FFFFFF"
             android:backgroundTint="#C0392B"
             android:textSize="18sp" />

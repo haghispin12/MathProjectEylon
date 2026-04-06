@@ -1,5 +1,6 @@
 package com.example.mathprojecteylon.pizzaproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import com.example.mathprojecteylon.R;
 
 public class cart2 extends AppCompatActivity {
     private Button pay;
+    private Button back ;
 
 
     @Override
@@ -28,6 +30,7 @@ public class cart2 extends AppCompatActivity {
         recyclerCart.setLayoutManager(new LinearLayoutManager(this));
         recyclerCart.setAdapter(adapter);
         pay=findViewById(R.id.btnCheckout);
+        back=findViewById(R.id.btnBack);
         init();
 
     }
@@ -37,6 +40,13 @@ public class cart2 extends AppCompatActivity {
             public void onClick(View v) {
                 order.orders.add(Buyer.currentBuyer);
                 Toast.makeText(cart2.this, "ההזמנה התקבלה!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(cart2.this, MainActivityPizza.class);
+                startActivity(intent);
             }
         });
     }
