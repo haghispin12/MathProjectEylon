@@ -51,9 +51,9 @@ public class logIn extends AppCompatActivity {
                .addOnCompleteListener(logIn.this, new OnCompleteListener<AuthResult>() {
                    @Override
                    public void onComplete(@NonNull Task<AuthResult> task) {
-                       if (task.isSuccessful()){
-                           Toast.makeText(logIn.this,"ברוך הבא",
-                                   Toast.LENGTH_SHORT).show();
+                       if (task.isSuccessful()) {
+                           Buyer.currentBuyer = new Buyer("", "", email, 0, 0, "", 0);
+                           Toast.makeText(logIn.this, "ברוך הבא", Toast.LENGTH_SHORT).show();
                            Intent intent = new Intent(logIn.this, MainActivityPizza.class);
                            startActivity(intent);
 

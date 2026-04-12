@@ -67,14 +67,7 @@
             android:orientation="horizontal"
             android:layout_marginBottom="16dp">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="סה״כ לתשלום"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:textColor="#1A1A1A" />
+
 
             <TextView
                 android:id="@+id/tvTotalPrice"
@@ -91,7 +84,7 @@
             android:id="@+id/btnCheckout"
             android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:text="💳 מעבר לתשלום"
+            android:text="שמירת ההזמנה"
             android:textSize="17sp"
             android:textStyle="bold"
             android:textColor="#FFFFFF"
