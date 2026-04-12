@@ -116,7 +116,7 @@ public class MainActivityPizza extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
                 intent.putExtra("pizzaName","פיצה אישית");
-                intent.putExtra("pizzaImage","personalpizza");
+                intent.putExtra("pizzaImage","littlepizza");
                 intent.putExtra("pizzaPrice","25");
                 startActivity(intent);
 
@@ -180,7 +180,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddMozzarella.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza mozzarella=new Pizza(45,"pizzaMozzarella","M",new ArrayList<>(),"classicpizza");
+                Pizza mozzarella=new Pizza(45,"פיצה מוצרלה","M",new ArrayList<>(),"classicpizza");
                 Buyer.currentBuyer.addToCart(mozzarella);
                 Toast.makeText(MainActivityPizza.this, "פיצה מוצרלה נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
@@ -192,7 +192,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddThick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza thick=new Pizza(50,"pizzaThick","M",new ArrayList<>(),"thickpizza");
+                Pizza thick=new Pizza(50,"פיצה עבה","M",new ArrayList<>(),"thickpizza");
                 Buyer.currentBuyer.addToCart(thick);
                 Toast.makeText(MainActivityPizza.this, "פיצה עבה נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
@@ -202,7 +202,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddThin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza thin=new Pizza(50,"pizzaThin","M",new ArrayList<>(),"thinpizza");
+                Pizza thin=new Pizza(50,"פיצה דקה","M",new ArrayList<>(),"thinpizza");
                 Buyer.currentBuyer.addToCart(thin);
                 Toast.makeText(MainActivityPizza.this, "פיצה דקה נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
@@ -213,7 +213,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddPersonal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza personal=new Pizza(25,"pizzaPersonal","M",new ArrayList<>(),"littlepizza");
+                Pizza personal=new Pizza(25,"פיצה אישית","M",new ArrayList<>(),"littlepizza");
                 Buyer.currentBuyer.addToCart(personal);
                 Toast.makeText(MainActivityPizza.this, "פיצה אישית נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
@@ -225,7 +225,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddFourCheese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza fourCheese=new Pizza(60,"pizzaFourCheese","M",new ArrayList<>(),"fourcheesepizza");
+                Pizza fourCheese=new Pizza(60,"פיצה ארבע גבינות","M",new ArrayList<>(),"fourcheesepizza");
                 Buyer.currentBuyer.addToCart(fourCheese);
                 Toast.makeText(MainActivityPizza.this, "פיצה ארבע גבינות נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
@@ -237,7 +237,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddExtraCheese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza extraCheese=new Pizza(55,"pizzaExtraCheese","M",new ArrayList<>(),"extracheesepizza");
+                Pizza extraCheese=new Pizza(55,"פיצה אקסטרה גבינה","M",new ArrayList<>(),"extracheesepizza");
                 Buyer.currentBuyer.addToCart(extraCheese);
                 Toast.makeText(MainActivityPizza.this, "פיצה אקסטרה גבינה נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
@@ -247,7 +247,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddGreek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza greek=new Pizza(55,"pizzaGreek","M",new ArrayList<>(),"greekpizza");
+                Pizza greek=new Pizza(55,"פיצה יוונית","M",new ArrayList<>(),"greekpizza");
                 Buyer.currentBuyer.addToCart(greek);
                 Toast.makeText(MainActivityPizza.this, "פיצה יוונית נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
@@ -258,7 +258,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddGlutenFree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza glutenFree=new Pizza(60,"pizzaGlutenFree","M",new ArrayList<>(),"glutenfreepizza");
+                Pizza glutenFree=new Pizza(60,"פיצה ללא גלוטן","M",new ArrayList<>(),"glutenfreepizza");
                 Buyer.currentBuyer.addToCart(glutenFree);
                 Toast.makeText(MainActivityPizza.this, "פיצה ללא גלוטן נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
@@ -269,7 +269,7 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddSquare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza square =new Pizza(55,"pizzaSquare","M",new ArrayList<>(),"squarepizza");
+                Pizza square =new Pizza(55,"פיצה מרובעת","M",new ArrayList<>(),"squarepizza");
                 Buyer.currentBuyer.addToCart(square);
                 Toast.makeText(MainActivityPizza.this, "פיצה מרובעת נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");

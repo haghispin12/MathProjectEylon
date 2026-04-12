@@ -17,6 +17,7 @@ public class Pizza {
         this.extras = extras;
         this.imageName = imageName;
     }
+    public Pizza() {}
 
     public int getPrice() {
         return price;

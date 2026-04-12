@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -25,6 +26,7 @@ public class cart2 extends AppCompatActivity {
     private Button pay;
     private Button back ;
     private FirebaseFirestore db;
+    private TextView totalPrice;
 
 
     @Override
@@ -35,6 +37,7 @@ public class cart2 extends AppCompatActivity {
         cartAdapter adapter = new cartAdapter(Buyer.currentBuyer.getCart(), new cartAdapter.OnCartChangedListener() {
             @Override
             public void onCartChanged() {
+                updateTotal();
 
             }
         });
@@ -42,26 +45,41 @@ public class cart2 extends AppCompatActivity {
         recyclerCart.setAdapter(adapter);
         pay=findViewById(R.id.btnCheckout);
         back=findViewById(R.id.btnBack);
+        totalPrice = findViewById(R.id.tvTotalPrice);
         db = FirebaseFirestore.getInstance();
         init();
+        updateTotal();
 
+    }
+    public void updateTotal() {
+        int total = 0;
+        for (Pizza pizza : Buyer.currentBuyer.getCart()) {
+            total += pizza.getPrice();
+        }
+        totalPrice.setText("₪" + total);
     }
     public void init(){
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(cart2.this, "נלחץ!", Toast.LENGTH_SHORT).show();
+                Log.d("Firestore", "מנסה לשמור...");
                 //order.orders.add(Buyer.currentBuyer);
                db.collection("Buyers").document()
                                .set(Buyer.currentBuyer)
                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                                            @Override
                                            public void onSuccess(Void unused) {
+
+                                               Log.d("Firestore", "הצליח!");
                                                Toast.makeText(cart2.this, "ההזמנה נשמרה!", Toast.LENGTH_SHORT).show();
                                            }
                                        }).addOnFailureListener(new OnFailureListener() {
                            @Override
                            public void onFailure(@NonNull Exception e) {
-                               Toast.makeText(cart2.this, "ההזמנה לא נשמרה", Toast.LENGTH_SHORT).show();
+                               //Toast.makeText(cart2.this, "ההזמנה לא נשמרה", Toast.LENGTH_SHORT).show();
+                               Log.d("Firestore", "נכשל: " + e.getMessage());
+                               Toast.makeText(cart2.this, e.getMessage(), Toast.LENGTH_LONG).show();
 
                            }
                        });

@@ -1,7 +1,5 @@
 package com.example.mathprojecteylon.pizzaproject;
-
 import java.util.ArrayList;
-
 public class Buyer extends User{
     private String adress;
     private int phoneNum;
@@ -13,29 +11,25 @@ public class Buyer extends User{
         this.adress = adress;
         this.phoneNum = phoneNum;
         this.cart=new ArrayList<Pizza>();
-
     }
+
+    public Buyer() {}
 
     public String getAdress() {
         return adress;
     }
-
     public void setAdress(String adress) {
         this.adress = adress;
     }
-
     public int getPhoneNum() {
         return phoneNum;
     }
-
     public void setPhoneNum(int phoneNum) {
         this.phoneNum = phoneNum;
     }
-
     public ArrayList<Pizza> getCart() {
         return cart;
     }
-
     public void setCart(ArrayList<Pizza> cart) {
         this.cart = cart;
     }
