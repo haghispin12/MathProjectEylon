@@ -28,6 +28,10 @@ public class logIn extends AppCompatActivity {
     private Button enter;
     private FirebaseAuth auth;
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,4 +75,5 @@ public class logIn extends AppCompatActivity {
        }
    });
     }
+
 }
