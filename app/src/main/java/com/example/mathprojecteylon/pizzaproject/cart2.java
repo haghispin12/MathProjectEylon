@@ -14,10 +14,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mathprojecteylon.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -64,19 +67,29 @@ public class cart2 extends AppCompatActivity {
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(cart2.this, "נלחץ!", Toast.LENGTH_SHORT).show();                Map<String, Object> invent = new HashMap<>();
+                Toast.makeText(cart2.this, "נלחץ!", Toast.LENGTH_SHORT).show();
+                Map<String, Object> invent = new HashMap<>();
                 invent.put("name", "Los Angeles");
                 invent.put("state", "CA");
                 invent.put("country", "USA");
 
-                db.collection("invents")
-                        .add(invent)
-                        .addOnSuccessListener(documentReference -> {
-                            Toast.makeText(cart2.this, "הועלה בהצלחה", Toast.LENGTH_SHORT).show();
-                        })
-                        .addOnFailureListener(e -> {
-                            Toast.makeText(cart2.this, "שגיאה", Toast.LENGTH_SHORT).show();
-                        });
+               db.collection("invents").add(invent).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
+                   @Override
+                   public void onComplete(@NonNull Task<DocumentReference> task) {
+                       int n =0;
+                   }
+               });
+
+
+//                db.collection("invents")
+//                        .add(invent)
+//
+//                        .addOnSuccessListener(documentReference -> {
+//                            Toast.makeText(cart2.this, "הועלה בהצלחה", Toast.LENGTH_SHORT).show();
+//                        })
+//                        .addOnFailureListener(e -> {
+//                            Toast.makeText(cart2.this, "שגיאה", Toast.LENGTH_SHORT).show();
+//                        });
             }
         });
     }
