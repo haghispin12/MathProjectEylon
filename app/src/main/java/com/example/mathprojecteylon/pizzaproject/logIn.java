@@ -2,6 +2,7 @@ package com.example.mathprojecteylon.pizzaproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,10 +17,16 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.mathprojecteylon.R;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class logIn extends AppCompatActivity {
     private EditText userN;
@@ -58,6 +65,7 @@ public class logIn extends AppCompatActivity {
                        if (task.isSuccessful()) {
                            Buyer.currentBuyer = new Buyer("", "", email, 0, 0, "", 0);
                            Toast.makeText(logIn.this, "ברוך הבא", Toast.LENGTH_SHORT).show();
+//                           addUser(email,password);
                            Intent intent = new Intent(logIn.this, MainActivityPizza.class);
                            startActivity(intent);
 
@@ -74,6 +82,24 @@ public class logIn extends AppCompatActivity {
 
        }
    });
+    }
+
+    public void addUser(String email,String password){
+        // Add document data with auto-generated id.
+        Map<String, Object> login = new HashMap<>();
+        login.put("email", email);
+        login.put("password",password);
+        FirebaseFirestore.getInstance().collection("cities").add(login).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+            @Override
+            public void onSuccess(DocumentReference documentReference) {
+               Log.d("","") ;
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.d("","") ;
+            }
+        });
     }
 
 }

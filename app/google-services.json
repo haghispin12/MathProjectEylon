@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "285724895307",
-    "project_id": "pizzaproject-30fb9",
-    "storage_bucket": "pizzaproject-30fb9.firebasestorage.app"
+    "project_number": "47078505383",
+    "project_id": "pizzaproject-2dfca",
+    "storage_bucket": "pizzaproject-2dfca.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:285724895307:android:3480f7a5409e4ca6f5c5ce",
+        "mobilesdk_app_id": "1:47078505383:android:9d76ead86511369173d482",
         "android_client_info": {
           "package_name": "com.example.mathprojecteylon"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDZbPOs9nC_wK4UIJFr4Qha_-b4r0Bwq5Y"
+          "current_key": "AIzaSyBJWY3bguq5n0VHZ7ZIQrwbGa2XLmjRDww"
         }
       ],
       "services": {

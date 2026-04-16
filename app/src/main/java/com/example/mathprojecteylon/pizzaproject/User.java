@@ -21,7 +21,6 @@ public class User {
 
     }
     public User() {}
-    public static ArrayList<User> users = new ArrayList<>();//מה שנותן את היכולת לשמור
     public String getFirstNameS() {
         return FirstNameS;
     }

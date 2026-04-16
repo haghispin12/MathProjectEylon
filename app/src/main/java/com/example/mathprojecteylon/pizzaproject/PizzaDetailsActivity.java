@@ -274,7 +274,8 @@ public class PizzaDetailsActivity extends AppCompatActivity {
          btnAddToCart.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 Pizza pizza = new Pizza(totalPrice, pizzaName, size, extras, pizzaImage);                 Buyer.currentBuyer.addToCart(pizza);
+                 Pizza pizza = new Pizza(totalPrice, pizzaName, size, extras, pizzaImage);
+                 Buyer.currentBuyer.addToCart(pizza);
                  Intent intent = new Intent(PizzaDetailsActivity.this, cart2.class);
                  startActivity(intent);
              }

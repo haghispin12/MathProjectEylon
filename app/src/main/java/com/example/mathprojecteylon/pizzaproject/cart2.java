@@ -67,29 +67,34 @@ public class cart2 extends AppCompatActivity {
         pay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(cart2.this, "נלחץ!", Toast.LENGTH_SHORT).show();
-                Map<String, Object> invent = new HashMap<>();
-                invent.put("name", "Los Angeles");
-                invent.put("state", "CA");
-                invent.put("country", "USA");
+                int total = 0;
+                for (int i = 0; i < Buyer.currentBuyer.getCart().size(); i++) {
+                    total += Buyer.currentBuyer.getCart().get(i).getPrice();
+                }
 
-               db.collection("invents").add(invent).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
-                   @Override
-                   public void onComplete(@NonNull Task<DocumentReference> task) {
-                       int n =0;
-                   }
-               });
+                Map<String, Object> orderData = new HashMap<>();
+                orderData.put("email", Buyer.currentBuyer.getEmailS());
+                orderData.put("cart", Buyer.currentBuyer.getCart());
+                orderData.put("totalPrice", total);
+                orderData.put("status", "ממתין");
+                orderData.put("estimatedTime", 0);
 
-
-//                db.collection("invents")
-//                        .add(invent)
-//
-//                        .addOnSuccessListener(documentReference -> {
-//                            Toast.makeText(cart2.this, "הועלה בהצלחה", Toast.LENGTH_SHORT).show();
-//                        })
-//                        .addOnFailureListener(e -> {
-//                            Toast.makeText(cart2.this, "שגיאה", Toast.LENGTH_SHORT).show();
-//                        });
+                db.collection("orders").document()
+                        .set(orderData)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(cart2.this, "ההזמנה נשמרה!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(cart2.this, OrdersActivity.class);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(cart2.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+                        });
             }
         });
     }
