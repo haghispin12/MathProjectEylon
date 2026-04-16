@@ -88,7 +88,15 @@ public class OrdersActivity extends AppCompatActivity {
             Map<String, Object> order = orders.get(position);
             holder.tvOrderStatus.setText("סטטוס: " + order.get("status"));
             holder.tvOrderTotal.setText("סכום: ₪" + order.get("totalPrice"));
-            holder.tvOrderItems.setText("פיצות: " + order.get("cart").toString());
+            ArrayList<Map<String, Object>> cart = (ArrayList<Map<String, Object>>) order.get("cart");
+            StringBuilder pizzaNames = new StringBuilder("פיצות: ");
+            for (int i = 0; i < cart.size(); i++) {
+                pizzaNames.append(cart.get(i).get("name"));
+                if (i < cart.size() - 1) {
+                    pizzaNames.append(", ");
+                }
+            }
+            holder.tvOrderItems.setText(pizzaNames.toString());
             Object timeObj = order.get("estimatedTime");
             int estimatedTime = timeObj != null ? ((Long) timeObj).intValue() : 0;
             if (estimatedTime == 0) {
