@@ -31,7 +31,6 @@ public class cart2 extends AppCompatActivity {
     private Button back;
     private FirebaseFirestore db;
     private TextView totalPrice;
-    private FirebaseAuth Mauth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +49,6 @@ public class cart2 extends AppCompatActivity {
         back = findViewById(R.id.btnBack);
         totalPrice = findViewById(R.id.tvTotalPrice);
         db = FirebaseFirestore.getInstance();
-        Mauth=FirebaseAuth.getInstance();
         init();
         updateTotal();
     }
@@ -97,48 +95,20 @@ public class cart2 extends AppCompatActivity {
                         });
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(cart2.this, MainActivityPizza.class);
+                startActivity(intent);
+            }
+        });
     }
 }
 
-//                        )
-//                @Override
-//                            public void onSuccess(Void aVoid) {
-//                                Log.d("haggay", "DocumentSnapshot successfully written!");
-//                            }
-//                        })
-//                        .addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Log.w("haggay", "Error writing document", e);
-//                            }
-//                        });
-//                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//                String email = user.getEmail();
-//               Toast.makeText(cart2.this, "נלחץ!", Toast.LENGTH_SHORT).show();
-//                db.collection("Buyers").document("test")
-//                        .set(Buyer.currentBuyer)
-//                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-//                           @Override
-//                            public void onSuccess(Void unused) {
-//                                Toast.makeText(cart2.this, "ההזמנה נשמרה!", Toast.LENGTH_SHORT).show();
-//                            }
-//                        }).addOnFailureListener(new OnFailureListener() {
-//                            @Override
-//                            public void onFailure(@NonNull Exception e) {
-//                                Toast.makeText(cart2.this, "ההזמנה איננה נשמרה", Toast.LENGTH_LONG).show();
-//                            }
-//                        });
-//            }
-//        });
-//        back.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(cart2.this, MainActivityPizza.class);
-//                startActivity(intent);
-//            }
-//        });
-//    }
-//}
+
+
+
+
 
 
 
