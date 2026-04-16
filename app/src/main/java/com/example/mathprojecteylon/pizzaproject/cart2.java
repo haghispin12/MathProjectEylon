@@ -84,8 +84,8 @@ public class cart2 extends AppCompatActivity {
                             public void onSuccess(Void unused) {
                                 Toast.makeText(cart2.this, "ההזמנה נשמרה!", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(cart2.this, OrdersActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
-                                finish();
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
