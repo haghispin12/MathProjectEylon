@@ -36,7 +36,7 @@ public class ManagerLogIn extends AppCompatActivity {
             public void onClick(View v) {
                 String ps=password.getText().toString();
             if (userName.getText().toString().equals("manager")){
-            if (ps.equals(5230)){
+            if (password.getText().toString().equals("5230"+"")){
                 Intent intent = new Intent(ManagerLogIn.this, MainActivityManager.class);
                 intent.putExtra("name","Manager");
                 startActivity(intent);

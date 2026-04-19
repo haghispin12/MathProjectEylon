@@ -74,7 +74,7 @@ public class cart2 extends AppCompatActivity {
                 orderData.put("email", Buyer.currentBuyer.getEmailS());
                 orderData.put("cart", Buyer.currentBuyer.getCart());
                 orderData.put("totalPrice", total);
-                orderData.put("status", "ממתין");
+                orderData.put("status", "מחכה לאישור המנהל");
                 orderData.put("estimatedTime", 0);
 
                 db.collection("orders").document()

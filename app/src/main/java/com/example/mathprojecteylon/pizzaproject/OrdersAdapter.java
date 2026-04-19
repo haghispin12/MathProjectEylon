@@ -11,6 +11,7 @@ import com.example.mathprojecteylon.R;
 
 import java.util.ArrayList;
 import java.util.Map;
+import android.os.CountDownTimer;
 
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewHolder> {
 
@@ -49,11 +50,24 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.OrderViewH
         holder.tvOrderStatus.setText("סטטוס: " + order.get("status"));
         holder.tvOrderTotal.setText("סכום: ₪" + order.get("totalPrice"));
         holder.tvOrderItems.setText("פיצות: " + order.get("cart").toString());
-        int estimatedTime = ((Long) order.get("estimatedTime")).intValue();
+        Object timeObj = order.get("estimatedTime");
+        int estimatedTime = timeObj != null ? ((Long) timeObj).intValue() : 0;
         if (estimatedTime == 0) {
             holder.tvOrderTimer.setText("זמן משוער: ממתין");
         } else {
-            holder.tvOrderTimer.setText("זמן משוער: " + estimatedTime + " דקות");
+            long milliseconds = estimatedTime * 60 * 1000;
+            new CountDownTimer(milliseconds, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    int minutesLeft = (int) (millisUntilFinished / 1000 / 60);
+                    int secondsLeft = (int) (millisUntilFinished / 1000 % 60);
+                    holder.tvOrderTimer.setText("זמן שנותר: " + minutesLeft + ":" + String.format("%02d", secondsLeft));
+                }
+                @Override
+                public void onFinish() {
+                    holder.tvOrderTimer.setText("ההזמנה מוכנה!");
+                }
+            }.start();
         }
     }
 

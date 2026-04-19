@@ -9,34 +9,43 @@
         android:layout_width="match_parent"
         android:layout_height="56dp"
         android:background="#C0392B"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="16dp">
-
-        <Button
-            android:id="@+id/btnUsers"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:text="משתמשים"
-            android:textSize="12sp"
-            android:textColor="#FFFFFF"
-            android:backgroundTint="#9B2335" />
+        android:gravity="center">
 
         <TextView
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:text="פאנל ניהול"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF"
-            android:gravity="center" />
-
+            android:textColor="#FFFFFF"/>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerOrders"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="12dp" />
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <Button
+            android:id="@+id/btnOrderDetails"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="פרטי הזמנות"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#C0392B"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnUpdateStatus"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:text="עדכון סטטוסים"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#C0392B"/>
+
+    </LinearLayout>
 
 </LinearLayout>
