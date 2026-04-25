@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.mathprojecteylon.R;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
@@ -42,6 +43,7 @@ public class AdminActivity extends AppCompatActivity {
 
     public void loadOrders() {
         db.collection("orders")
+                .orderBy(FieldPath.documentId())
                 .addSnapshotListener((queryDocumentSnapshots, error) -> {
                     if (error != null) return;
                     ordersList.clear();
@@ -65,8 +67,15 @@ public class AdminActivity extends AppCompatActivity {
         }
 
         public class AdminViewHolder extends RecyclerView.ViewHolder {
-            TextView tvAdminEmail, tvAdminItems, tvAdminTotal, tvAdminStatus;
-            Button btnWaiting, btnPreparing, btnReady, btnSetTimer;
+            TextView tvAdminEmail;
+            TextView tvAdminItems;
+            TextView tvAdminTotal;
+            TextView tvAdminStatus;
+            Button btnWaiting;
+            Button btnPreparing;
+            Button btnReady;
+            Button btnReject;
+            Button btnSetTimer;
             EditText etTimer;
 
             public AdminViewHolder(View itemView) {
@@ -78,6 +87,7 @@ public class AdminActivity extends AppCompatActivity {
                 btnWaiting = itemView.findViewById(R.id.btnWaiting);
                 btnPreparing = itemView.findViewById(R.id.btnPreparing);
                 btnReady = itemView.findViewById(R.id.btnReady);
+                btnReject = itemView.findViewById(R.id.btnReject);
                 btnSetTimer = itemView.findViewById(R.id.btnSetTimer);
                 etTimer = itemView.findViewById(R.id.etTimer);
             }
@@ -108,10 +118,24 @@ public class AdminActivity extends AppCompatActivity {
             }
             holder.tvAdminItems.setText(pizzaNames.toString());
 
+            // כפתורי שינוי סטטוס
             holder.btnWaiting.setOnClickListener(v -> updateStatus(orderId, "מחכה לאישור המנהל", position));
             holder.btnPreparing.setOnClickListener(v -> updateStatus(orderId, "בהכנה", position));
             holder.btnReady.setOnClickListener(v -> updateStatus(orderId, "מוכן", position));
 
+            // כפתור דחיית הזמנה — מעדכן סטטוס ל"נדחה" ב-Firestore
+            // הלקוח יראה במסך ההזמנות שלו שההזמנה נדחתה
+            holder.btnReject.setOnClickListener(v -> {
+                db.collection("orders").document(orderId)
+                        .update("status", "ההזמנה לא התקבלה")
+                        .addOnSuccessListener(unused -> {
+                            orders.get(position).put("status", "ההזמנה לא התקבלה");
+                            notifyItemChanged(position);
+                            Toast.makeText(AdminActivity.this, "ההזמנה נדחתה", Toast.LENGTH_SHORT).show();
+                        });
+            });
+
+            // כפתור הגדרת זמן הכנה
             holder.btnSetTimer.setOnClickListener(v -> {
                 String timeStr = holder.etTimer.getText().toString();
                 if (!timeStr.isEmpty()) {

@@ -10,23 +10,31 @@
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="60dp"
         android:orientation="horizontal"
         android:background="#C0392B"
         android:gravity="center_vertical"
         android:paddingHorizontal="16dp">
 
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="115dp"
+            android:layout_height="match_parent"
+            android:backgroundTint="#9B2335"
+            android:text="התנתק"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="12sp" />
+
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="🍕 התפריט שלנו"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:gravity="center" />
-
-
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -41,7 +49,6 @@
             android:orientation="vertical"
             android:padding="12dp">
 
-            <!-- ===== קלאסיות ===== -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -51,7 +58,6 @@
                 android:textColor="#C0392B"
                 android:layout_marginBottom="8dp" />
 
-            <!-- מוצרלה -->
             <LinearLayout
                 android:id="@+id/cardMozzarella"
                 android:layout_width="match_parent"
@@ -62,59 +68,25 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true">
-
                 <ImageView
                     android:layout_width="70dp"
                     android:layout_height="70dp"
                     android:src="@drawable/classicpizza"
                     android:scaleType="centerCrop"
                     android:layout_marginEnd="12dp" />
-
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="מוצרלה"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="עגבניה, מוצרלה טרייה"
-                        android:textSize="12sp"
-                        android:textColor="#999999" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₪45"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="#C0392B" />
-
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="מוצרלה" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="עגבניה, מוצרלה טרייה" android:textSize="12sp" android:textColor="#999999" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₪45" android:textSize="14sp" android:textStyle="bold" android:textColor="#C0392B" />
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnAddMozzarella"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="🛒  הוסף לעגלה"
-                    android:textSize="12sp"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#C0392B" />
-
+                <Button android:id="@+id/btnAddMozzarella" android:layout_width="120dp" android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="🛒  הוסף לעגלה" android:textSize="12sp" android:textColor="#FFFFFF" android:backgroundTint="#C0392B" />
             </LinearLayout>
 
-            <!-- פיצה עבה -->
             <LinearLayout
                 android:id="@+id/cardThick"
                 android:layout_width="match_parent"
@@ -125,59 +97,15 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/thickpizza"
-                    android:scaleType="centerCrop"
-                    android:layout_marginEnd="12dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="פיצה עבה"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="בצק עבה ואוורירי"
-                        android:textSize="12sp"
-                        android:textColor="#999999" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₪50"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="#C0392B" />
-
+                <ImageView android:layout_width="70dp" android:layout_height="70dp" android:src="@drawable/thickpizza" android:scaleType="centerCrop" android:layout_marginEnd="12dp" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center_vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="פיצה עבה" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="בצק עבה ואוורירי" android:textSize="12sp" android:textColor="#999999" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₪50" android:textSize="14sp" android:textStyle="bold" android:textColor="#C0392B" />
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnAddThick"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="🛒  הוסף לעגלה"
-                    android:textSize="12sp"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#C0392B" />
-
+                <Button android:id="@+id/btnAddThick" android:layout_width="120dp" android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="🛒  הוסף לעגלה" android:textSize="12sp" android:textColor="#FFFFFF" android:backgroundTint="#C0392B" />
             </LinearLayout>
 
-            <!-- פיצה דקה -->
             <LinearLayout
                 android:id="@+id/cardThin"
                 android:layout_width="match_parent"
@@ -188,59 +116,15 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/thinpizza"
-                    android:scaleType="centerCrop"
-                    android:layout_marginEnd="12dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="פיצה דקה"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="בצק דק ופריך"
-                        android:textSize="12sp"
-                        android:textColor="#999999" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₪50"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="#C0392B" />
-
+                <ImageView android:layout_width="70dp" android:layout_height="70dp" android:src="@drawable/thinpizza" android:scaleType="centerCrop" android:layout_marginEnd="12dp" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center_vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="פיצה דקה" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="בצק דק ופריך" android:textSize="12sp" android:textColor="#999999" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₪50" android:textSize="14sp" android:textStyle="bold" android:textColor="#C0392B" />
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnAddThin"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="🛒  הוסף לעגלה"
-                    android:textSize="12sp"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#C0392B" />
-
+                <Button android:id="@+id/btnAddThin" android:layout_width="120dp" android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="🛒  הוסף לעגלה" android:textSize="12sp" android:textColor="#FFFFFF" android:backgroundTint="#C0392B" />
             </LinearLayout>
 
-            <!-- פיצה אישית -->
             <LinearLayout
                 android:id="@+id/cardPersonal"
                 android:layout_width="match_parent"
@@ -251,59 +135,15 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/littlepizza"
-                    android:scaleType="centerCrop"
-                    android:layout_marginEnd="12dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="פיצה אישית"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="בחר תוספות לפי טעמך"
-                        android:textSize="12sp"
-                        android:textColor="#999999" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₪25"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="#C0392B" />
-
+                <ImageView android:layout_width="70dp" android:layout_height="70dp" android:src="@drawable/littlepizza" android:scaleType="centerCrop" android:layout_marginEnd="12dp" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center_vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="פיצה אישית" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="בחר תוספות לפי טעמך" android:textSize="12sp" android:textColor="#999999" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₪25" android:textSize="14sp" android:textStyle="bold" android:textColor="#C0392B" />
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnAddPersonal"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="🛒  הוסף לעגלה"
-                    android:textSize="12sp"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#C0392B" />
-
+                <Button android:id="@+id/btnAddPersonal" android:layout_width="120dp" android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="🛒  הוסף לעגלה" android:textSize="12sp" android:textColor="#FFFFFF" android:backgroundTint="#C0392B" />
             </LinearLayout>
 
-            <!-- ===== מיוחדות ===== -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -314,7 +154,6 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginTop="8dp" />
 
-            <!-- ארבע גבינות -->
             <LinearLayout
                 android:id="@+id/cardFourCheese"
                 android:layout_width="match_parent"
@@ -325,59 +164,15 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/fourcheesepizza"
-                    android:scaleType="centerCrop"
-                    android:layout_marginEnd="12dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ארבע גבינות"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="מוצרלה, גאודה, פרמזן, ריקוטה"
-                        android:textSize="12sp"
-                        android:textColor="#999999" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₪60"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="#C0392B" />
-
+                <ImageView android:layout_width="70dp" android:layout_height="70dp" android:src="@drawable/fourcheesepizza" android:scaleType="centerCrop" android:layout_marginEnd="12dp" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center_vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ארבע גבינות" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="מוצרלה, גאודה, פרמזן, ריקוטה" android:textSize="12sp" android:textColor="#999999" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₪60" android:textSize="14sp" android:textStyle="bold" android:textColor="#C0392B" />
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnAddFourCheese"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:backgroundTint="#C0392B"
-                    android:text="🛒  הוסף לעגלה"
-                    android:textColor="#FFFFFF"
-                    android:textSize="12sp" />
-
+                <Button android:id="@+id/btnAddFourCheese" android:layout_width="120dp" android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:backgroundTint="#C0392B" android:text="🛒  הוסף לעגלה" android:textColor="#FFFFFF" android:textSize="12sp" />
             </LinearLayout>
 
-            <!-- אקסטרה גבינה -->
             <LinearLayout
                 android:id="@+id/cardExtraCheese"
                 android:layout_width="match_parent"
@@ -388,59 +183,15 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/extracheesepizza"
-                    android:scaleType="centerCrop"
-                    android:layout_marginEnd="12dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="אקסטרה גבינה"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="גבינה, גבינה ועוד גבינה"
-                        android:textSize="12sp"
-                        android:textColor="#999999" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₪55"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="#C0392B" />
-
+                <ImageView android:layout_width="70dp" android:layout_height="70dp" android:src="@drawable/extracheesepizza" android:scaleType="centerCrop" android:layout_marginEnd="12dp" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center_vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="אקסטרה גבינה" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="גבינה, גבינה ועוד גבינה" android:textSize="12sp" android:textColor="#999999" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₪55" android:textSize="14sp" android:textStyle="bold" android:textColor="#C0392B" />
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnAddExtraCheese"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="🛒  הוסף לעגלה"
-                    android:textSize="12sp"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#C0392B" />
-
+                <Button android:id="@+id/btnAddExtraCheese" android:layout_width="120dp" android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="🛒  הוסף לעגלה" android:textSize="12sp" android:textColor="#FFFFFF" android:backgroundTint="#C0392B" />
             </LinearLayout>
 
-            <!-- פיצה יוונית -->
             <LinearLayout
                 android:id="@+id/cardGreek"
                 android:layout_width="match_parent"
@@ -451,59 +202,15 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/greekpizza"
-                    android:scaleType="centerCrop"
-                    android:layout_marginEnd="12dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="פיצה יוונית"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="פטה, זיתים, עגבניה"
-                        android:textSize="12sp"
-                        android:textColor="#999999" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₪55"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="#C0392B" />
-
+                <ImageView android:layout_width="70dp" android:layout_height="70dp" android:src="@drawable/greekpizza" android:scaleType="centerCrop" android:layout_marginEnd="12dp" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center_vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="פיצה יוונית" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="פטה, זיתים, עגבניה" android:textSize="12sp" android:textColor="#999999" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₪55" android:textSize="14sp" android:textStyle="bold" android:textColor="#C0392B" />
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnAddGreek"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="🛒  הוסף לעגלה"
-                    android:textSize="12sp"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#C0392B" />
-
+                <Button android:id="@+id/btnAddGreek" android:layout_width="120dp" android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="🛒  הוסף לעגלה" android:textSize="12sp" android:textColor="#FFFFFF" android:backgroundTint="#C0392B" />
             </LinearLayout>
 
-            <!-- ללא גלוטן -->
             <LinearLayout
                 android:id="@+id/cardGlutenFree"
                 android:layout_width="match_parent"
@@ -514,59 +221,15 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/glutenfreepizza"
-                    android:scaleType="centerCrop"
-                    android:layout_marginEnd="12dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ללא גלוטן"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="בצק ללא גלוטן, מתאים לצליאקים"
-                        android:textSize="12sp"
-                        android:textColor="#999999" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₪60"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="#C0392B" />
-
+                <ImageView android:layout_width="70dp" android:layout_height="70dp" android:src="@drawable/glutenfreepizza" android:scaleType="centerCrop" android:layout_marginEnd="12dp" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center_vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ללא גלוטן" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="בצק ללא גלוטן, מתאים לצליאקים" android:textSize="12sp" android:textColor="#999999" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₪60" android:textSize="14sp" android:textStyle="bold" android:textColor="#C0392B" />
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnAddGlutenFree"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="🛒  הוסף לעגלה"
-                    android:textSize="12sp"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#C0392B" />
-
+                <Button android:id="@+id/btnAddGlutenFree" android:layout_width="120dp" android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="🛒  הוסף לעגלה" android:textSize="12sp" android:textColor="#FFFFFF" android:backgroundTint="#C0392B" />
             </LinearLayout>
 
-            <!-- פיצה מרובעת -->
             <LinearLayout
                 android:id="@+id/cardSquare"
                 android:layout_width="match_parent"
@@ -577,79 +240,46 @@
                 android:layout_marginBottom="10dp"
                 android:clickable="true"
                 android:focusable="true">
-
-                <ImageView
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:src="@drawable/squarepizza"
-                    android:scaleType="centerCrop"
-                    android:layout_marginEnd="12dp" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="פיצה מרובעת"
-                        android:textSize="15sp"
-                        android:textStyle="bold"
-                        android:textColor="#1A1A1A" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="סיציליאנית קלאסית"
-                        android:textSize="12sp"
-                        android:textColor="#999999" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="₪55"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="#C0392B" />
-
+                <ImageView android:layout_width="70dp" android:layout_height="70dp" android:src="@drawable/squarepizza" android:scaleType="centerCrop" android:layout_marginEnd="12dp" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical" android:gravity="center_vertical">
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="פיצה מרובעת" android:textSize="15sp" android:textStyle="bold" android:textColor="#1A1A1A" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="סיציליאנית קלאסית" android:textSize="12sp" android:textColor="#999999" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₪55" android:textSize="14sp" android:textStyle="bold" android:textColor="#C0392B" />
                 </LinearLayout>
-
-                <Button
-                    android:id="@+id/btnAddSquare"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:text="🛒  הוסף לעגלה"
-                    android:textSize="12sp"
-                    android:textColor="#FFFFFF"
-                    android:backgroundTint="#C0392B" />
-
+                <Button android:id="@+id/btnAddSquare" android:layout_width="120dp" android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="🛒  הוסף לעגלה" android:textSize="12sp" android:textColor="#FFFFFF" android:backgroundTint="#C0392B" />
             </LinearLayout>
 
         </LinearLayout>
-
     </ScrollView>
 
-    <!-- כפתור תשלום -->
-    <Button
-        android:id="@+id/btnCheckout"
+    <!-- כפתורים תחתונים -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:text="🛒 לתשלום | 0 פריטים"
-        android:textSize="16sp"
-        android:textColor="#FFFFFF"
-        android:backgroundTint="#C0392B"
-        android:layout_margin="12dp" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <Button
+            android:id="@+id/btnCheckout"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:text="🛒 לתשלום"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#C0392B"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btnMyOrders"
+            android:layout_width="0dp"
+            android:layout_height="52dp"
+            android:layout_weight="1"
+            android:text="📦 ההזמנות שלי"
+            android:textSize="16sp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#2C3E50"/>
+
+    </LinearLayout>
 
 </LinearLayout>
-
-
-
-
-
-
-
-

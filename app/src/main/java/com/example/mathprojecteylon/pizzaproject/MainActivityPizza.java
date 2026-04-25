@@ -4,23 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.example.mathprojecteylon.R;
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 
 public class MainActivityPizza extends AppCompatActivity {
-    // כרטיסי פיצות
+
     private LinearLayout cardMozzarella;
     private LinearLayout cardThick;
     private LinearLayout cardThin;
@@ -39,19 +32,17 @@ public class MainActivityPizza extends AppCompatActivity {
     private Button btnAddGreek;
     private Button btnAddGlutenFree;
     private Button btnAddSquare;
-    private Pizza pizza;
-
-
-    // כפתור תשלום
     private Button btnCheckout;
-
+    private Button btnMyOrders;
+    private Button btnLogout;
+    private Pizza pizza;
     private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_pizza);
-        // חיבור המשתנים ל-XML
+
         cardMozzarella = findViewById(R.id.cardMozzarella);
         cardThick = findViewById(R.id.cardThick);
         cardThin = findViewById(R.id.cardThin);
@@ -71,128 +62,147 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddGreek = findViewById(R.id.btnAddGreek);
         btnAddGlutenFree = findViewById(R.id.btnAddGlutenFree);
         btnAddSquare = findViewById(R.id.btnAddSquare);
-        if (Buyer.currentBuyer == null) {
-            Buyer.currentBuyer = new Buyer("", "", "", 0, 0, "", 0);
-        }
-        init();
+        btnMyOrders = findViewById(R.id.btnMyOrders);
+        btnLogout = findViewById(R.id.btnLogout);
 
-        };
-    public void init(){
+        // אם currentBuyer לא קיים — נוצר עם האימייל מ-Firebase
+        // חשוב! לא יוצרים עם אימייל ריק כדי שההזמנות ייטענו נכון
+        if (Buyer.currentBuyer == null) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String email = user != null ? user.getEmail() : "";
+            Buyer.currentBuyer = new Buyer("", "", email, 0, 0, "", 0);
+        }
+
+        init();
+    }
+
+    public void init() {
+
+        // כפתור התנתקות
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Buyer.currentBuyer = null;
+                Intent intent = new Intent(MainActivityPizza.this, launcher2.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+
         cardMozzarella.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MainActivityPizza.this, PizzaDetailsActivity.class);
-                intent.putExtra("pizzaName","מוצרלה");
-                intent.putExtra("pizzaImage","classicpizza");
-                int x=0;
-                intent.putExtra("pizzaPrice","45");
+                Intent intent = new Intent(MainActivityPizza.this, PizzaDetailsActivity.class);
+                intent.putExtra("pizzaName", "מוצרלה");
+                intent.putExtra("pizzaImage", "classicpizza");
+                intent.putExtra("pizzaPrice", "45");
                 startActivity(intent);
-
             }
         });
+
         cardThick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
-                intent.putExtra("pizzaName","פיצה עבה");
-                intent.putExtra("pizzaImage","thickpizza");
-                intent.putExtra("pizzaPrice","50");
+                Intent intent = new Intent(MainActivityPizza.this, PizzaDetailsActivity.class);
+                intent.putExtra("pizzaName", "פיצה עבה");
+                intent.putExtra("pizzaImage", "thickpizza");
+                intent.putExtra("pizzaPrice", "50");
                 startActivity(intent);
-
             }
         });
+
         cardThin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
-                intent.putExtra("pizzaName","פיצה דקה");
-                intent.putExtra("pizzaImage","thinpizza");
-                intent.putExtra("pizzaPrice","50");
+                Intent intent = new Intent(MainActivityPizza.this, PizzaDetailsActivity.class);
+                intent.putExtra("pizzaName", "פיצה דקה");
+                intent.putExtra("pizzaImage", "thinpizza");
+                intent.putExtra("pizzaPrice", "50");
                 startActivity(intent);
             }
         });
+
         cardPersonal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
-                intent.putExtra("pizzaName","פיצה אישית");
-                intent.putExtra("pizzaImage","littlepizza");
-                intent.putExtra("pizzaPrice","25");
+                Intent intent = new Intent(MainActivityPizza.this, PizzaDetailsActivity.class);
+                intent.putExtra("pizzaName", "פיצה אישית");
+                intent.putExtra("pizzaImage", "littlepizza");
+                intent.putExtra("pizzaPrice", "25");
                 startActivity(intent);
-
             }
         });
+
         cardFourCheese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
-                intent.putExtra("pizzaName","ארבע גבינות");
-                intent.putExtra("pizzaImage","fourcheesepizza");
-                intent.putExtra("pizzaPrice","60");
+                Intent intent = new Intent(MainActivityPizza.this, PizzaDetailsActivity.class);
+                intent.putExtra("pizzaName", "ארבע גבינות");
+                intent.putExtra("pizzaImage", "fourcheesepizza");
+                intent.putExtra("pizzaPrice", "60");
                 startActivity(intent);
-
             }
         });
+
         cardExtraCheese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
-                intent.putExtra("pizzaName","אקסטרה גבינה");
-                intent.putExtra("pizzaImage","extracheesepizza");
-                intent.putExtra("pizzaPrice","55");
+                Intent intent = new Intent(MainActivityPizza.this, PizzaDetailsActivity.class);
+                intent.putExtra("pizzaName", "אקסטרה גבינה");
+                intent.putExtra("pizzaImage", "extracheesepizza");
+                intent.putExtra("pizzaPrice", "55");
                 startActivity(intent);
-
             }
         });
+
         cardGreek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
-                intent.putExtra("pizzaName","פיצה יוונית");
-                intent.putExtra("pizzaImage","greekpizza");
-                intent.putExtra("pizzaPrice","55");
+                Intent intent = new Intent(MainActivityPizza.this, PizzaDetailsActivity.class);
+                intent.putExtra("pizzaName", "פיצה יוונית");
+                intent.putExtra("pizzaImage", "greekpizza");
+                intent.putExtra("pizzaPrice", "55");
                 startActivity(intent);
-
             }
         });
+
         cardGlutenFree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
-                intent.putExtra("pizzaName","ללא גלוטן");
-                intent.putExtra("pizzaImage","glutenfreepizza");
-                intent.putExtra("pizzaPrice","60");
+                Intent intent = new Intent(MainActivityPizza.this, PizzaDetailsActivity.class);
+                intent.putExtra("pizzaName", "ללא גלוטן");
+                intent.putExtra("pizzaImage", "glutenfreepizza");
+                intent.putExtra("pizzaPrice", "60");
                 startActivity(intent);
-
             }
         });
 
         cardSquare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent (MainActivityPizza.this, PizzaDetailsActivity.class);
-                intent.putExtra("pizzaName","פיצה מרובעת");
-                intent.putExtra("pizzaImage","squarepizza");
-                intent.putExtra("pizzaPrice","55");
+                Intent intent = new Intent(MainActivityPizza.this, PizzaDetailsActivity.class);
+                intent.putExtra("pizzaName", "פיצה מרובעת");
+                intent.putExtra("pizzaImage", "squarepizza");
+                intent.putExtra("pizzaPrice", "55");
                 startActivity(intent);
             }
         });
+
         btnAddMozzarella.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza mozzarella=new Pizza(45,"פיצה מוצרלה","M",new ArrayList<>(),"classicpizza");
+                Pizza mozzarella = new Pizza(45, "פיצה מוצרלה", "M", new ArrayList<>(), "classicpizza");
                 Buyer.currentBuyer.addToCart(mozzarella);
                 Toast.makeText(MainActivityPizza.this, "פיצה מוצרלה נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
-
-
             }
         });
 
         btnAddThick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza thick=new Pizza(50,"פיצה עבה","M",new ArrayList<>(),"thickpizza");
+                Pizza thick = new Pizza(50, "פיצה עבה", "M", new ArrayList<>(), "thickpizza");
                 Buyer.currentBuyer.addToCart(thick);
                 Toast.makeText(MainActivityPizza.this, "פיצה עבה נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
@@ -202,42 +212,37 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddThin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza thin=new Pizza(50,"פיצה דקה","M",new ArrayList<>(),"thinpizza");
+                Pizza thin = new Pizza(50, "פיצה דקה", "M", new ArrayList<>(), "thinpizza");
                 Buyer.currentBuyer.addToCart(thin);
                 Toast.makeText(MainActivityPizza.this, "פיצה דקה נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
-
             }
         });
 
         btnAddPersonal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza personal=new Pizza(25,"פיצה אישית","M",new ArrayList<>(),"littlepizza");
+                Pizza personal = new Pizza(25, "פיצה אישית", "M", new ArrayList<>(), "littlepizza");
                 Buyer.currentBuyer.addToCart(personal);
                 Toast.makeText(MainActivityPizza.this, "פיצה אישית נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
-
-
             }
         });
 
         btnAddFourCheese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza fourCheese=new Pizza(60,"פיצה ארבע גבינות","M",new ArrayList<>(),"fourcheesepizza");
+                Pizza fourCheese = new Pizza(60, "פיצה ארבע גבינות", "M", new ArrayList<>(), "fourcheesepizza");
                 Buyer.currentBuyer.addToCart(fourCheese);
                 Toast.makeText(MainActivityPizza.this, "פיצה ארבע גבינות נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
-
-
             }
         });
 
         btnAddExtraCheese.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza extraCheese=new Pizza(55,"פיצה אקסטרה גבינה","M",new ArrayList<>(),"extracheesepizza");
+                Pizza extraCheese = new Pizza(55, "פיצה אקסטרה גבינה", "M", new ArrayList<>(), "extracheesepizza");
                 Buyer.currentBuyer.addToCart(extraCheese);
                 Toast.makeText(MainActivityPizza.this, "פיצה אקסטרה גבינה נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
@@ -247,44 +252,47 @@ public class MainActivityPizza extends AppCompatActivity {
         btnAddGreek.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza greek=new Pizza(55,"פיצה יוונית","M",new ArrayList<>(),"greekpizza");
+                Pizza greek = new Pizza(55, "פיצה יוונית", "M", new ArrayList<>(), "greekpizza");
                 Buyer.currentBuyer.addToCart(greek);
                 Toast.makeText(MainActivityPizza.this, "פיצה יוונית נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
-
             }
         });
 
         btnAddGlutenFree.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza glutenFree=new Pizza(60,"פיצה ללא גלוטן","M",new ArrayList<>(),"glutenfreepizza");
+                Pizza glutenFree = new Pizza(60, "פיצה ללא גלוטן", "M", new ArrayList<>(), "glutenfreepizza");
                 Buyer.currentBuyer.addToCart(glutenFree);
                 Toast.makeText(MainActivityPizza.this, "פיצה ללא גלוטן נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
-
             }
         });
 
         btnAddSquare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Pizza square =new Pizza(55,"פיצה מרובעת","M",new ArrayList<>(),"squarepizza");
+                Pizza square = new Pizza(55, "פיצה מרובעת", "M", new ArrayList<>(), "squarepizza");
                 Buyer.currentBuyer.addToCart(square);
                 Toast.makeText(MainActivityPizza.this, "פיצה מרובעת נוספה לעגלה", Toast.LENGTH_SHORT).show();
                 btnCheckout.setText("🛒 לתשלום | " + Buyer.currentBuyer.getCart().size() + " פריטים");
-
             }
         });
+
         btnCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(MainActivityPizza.this, cart2.class);
+                Intent intent = new Intent(MainActivityPizza.this, cart2.class);
                 startActivity(intent);
             }
         });
 
+        btnMyOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivityPizza.this, OrdersActivity.class);
+                startActivity(intent);
+            }
+        });
     }
-    }
-
-
+}

@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,15 +79,26 @@ public class OrdersActivity extends AppCompatActivity {
     }
 
     public void loadOrders() {
+        // הדפסת האימייל ל-Logcat לצורך בדיקה
+        String email = Buyer.currentBuyer.getEmailS();
+        Log.d("Orders", "email: " + email);
+
         db.collection("orders")
-                .whereEqualTo("email", Buyer.currentBuyer.getEmailS())
+                .whereEqualTo("email", email)
                 .addSnapshotListener((queryDocumentSnapshots, error) -> {
-                    if (error != null) return;
+                    if (error != null) {
+                        Log.d("Orders", "error: " + error.getMessage());
+                        return;
+                    }
+
+                    Log.d("Orders", "docs: " + queryDocumentSnapshots.size());
+
                     for (CountDownTimer timer : timers.values()) {
                         timer.cancel();
                     }
                     timers.clear();
                     ordersList.clear();
+
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                         Map<String, Object> data = doc.getData();
                         data.put("docId", doc.getId());
@@ -130,6 +142,7 @@ public class OrdersActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
             Map<String, Object> order = orders.get(position);
+
             holder.tvOrderStatus.setText("סטטוס: " + order.get("status"));
             holder.tvOrderTotal.setText("סכום: ₪" + order.get("totalPrice"));
 
@@ -156,6 +169,7 @@ public class OrdersActivity extends AppCompatActivity {
                 long startTime = (Long) startObj;
                 long elapsed = System.currentTimeMillis() - startTime;
                 long remaining = (long) estimatedTime * 60 * 1000 - elapsed;
+
                 if (remaining <= 0) {
                     holder.tvOrderTimer.setText("ההזמנה מוכנה!");
                 } else {
@@ -166,6 +180,7 @@ public class OrdersActivity extends AppCompatActivity {
                             int secondsLeft = (int) (millisUntilFinished / 1000 % 60);
                             holder.tvOrderTimer.setText("זמן שנותר: " + minutesLeft + ":" + String.format("%02d", secondsLeft));
                         }
+
                         @Override
                         public void onFinish() {
                             holder.tvOrderTimer.setText("ההזמנה מוכנה!");

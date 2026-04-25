@@ -6,16 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.example.mathprojecteylon.R;
 
 public class ManagerLogIn extends AppCompatActivity {
+
     private EditText userName;
     private EditText password;
     private Button enter;
@@ -24,33 +19,34 @@ public class ManagerLogIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_log_in);
-        userName=findViewById(R.id.etAdminUsername);
-        password=findViewById(R.id.etAdminPassword);
-        enter=findViewById(R.id.btnAdminLogin);
+        userName = findViewById(R.id.etAdminUsername);
+        password = findViewById(R.id.etAdminPassword);
+        enter = findViewById(R.id.btnAdminLogin);
         init();
+    }
 
-        }
-        public void init(){
+    public void init() {
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String ps=password.getText().toString();
-            if (userName.getText().toString().equals("manager")){
-            if (password.getText().toString().equals("5230"+"")){
-                Intent intent = new Intent(ManagerLogIn.this, MainActivityManager.class);
-                intent.putExtra("name","Manager");
-                startActivity(intent);
-            }
-            }
-            else {
-                Toast.makeText(ManagerLogIn.this, "כניסה שגויה נסה שנית", Toast.LENGTH_SHORT).show();
+                String name = userName.getText().toString();
+                String pass = password.getText().toString();
 
-            }
+                if (name.equals("manager") && pass.equals("5230")) {
+                    // שמירה ב-SharedPreferences שהמנהל נכנס
+                    // כך launcher2 יידע לשלוח אותו למסך המנהל ולא ללקוח
+                    getSharedPreferences("app", MODE_PRIVATE)
+                            .edit()
+                            .putBoolean("isManager", true)
+                            .apply();
 
-
-
-
+                    Intent intent = new Intent(ManagerLogIn.this, MainActivityManager.class);
+                    intent.putExtra("name", "Manager");
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(ManagerLogIn.this, "כניסה שגויה נסה שנית", Toast.LENGTH_SHORT).show();
+                }
             }
         });
-        }
     }
+}
