@@ -1,6 +1,7 @@
 package com.example.mathprojecteylon.pizzaproject;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 public class AdminActivity extends AppCompatActivity {
@@ -26,6 +29,9 @@ public class AdminActivity extends AppCompatActivity {
     private ArrayList<Map<String, Object>> ordersList;
     private ArrayList<String> orderIds;
     private AdminAdapter adapter;
+
+    // מפה של טיימרים — כדי לבטל אותם כשהמסך נסגר
+    private HashMap<Integer, CountDownTimer> timers = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +47,47 @@ public class AdminActivity extends AppCompatActivity {
         loadOrders();
     }
 
+    // ביטול כל הטיימרים כשהמסך נסגר
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        for (CountDownTimer timer : timers.values()) {
+            timer.cancel();
+        }
+    }
+
     public void loadOrders() {
         db.collection("orders")
+                .whereIn("status", Arrays.asList("מחכה לאישור המנהל", "בהכנה"))
                 .orderBy(FieldPath.documentId())
                 .addSnapshotListener((queryDocumentSnapshots, error) -> {
                     if (error != null) return;
-                    ordersList.clear();
-                    orderIds.clear();
+
+                    ArrayList<Map<String, Object>> newOrders = new ArrayList<>();
+                    ArrayList<String> newIds = new ArrayList<>();
+
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
-                        ordersList.add(doc.getData());
-                        orderIds.add(doc.getId());
+                        newOrders.add(doc.getData());
+                        newIds.add(doc.getId());
                     }
-                    adapter.notifyDataSetChanged();
+
+                    for (int i = 0; i < newOrders.size(); i++) {
+                        if (i < ordersList.size()) {
+                            ordersList.set(i, newOrders.get(i));
+                            orderIds.set(i, newIds.get(i));
+                            adapter.notifyItemChanged(i);
+                        } else {
+                            ordersList.add(newOrders.get(i));
+                            orderIds.add(newIds.get(i));
+                            adapter.notifyItemInserted(i);
+                        }
+                    }
+
+                    while (ordersList.size() > newOrders.size()) {
+                        ordersList.remove(ordersList.size() - 1);
+                        orderIds.remove(orderIds.size() - 1);
+                        adapter.notifyItemRemoved(ordersList.size());
+                    }
                 });
     }
 
@@ -71,6 +106,7 @@ public class AdminActivity extends AppCompatActivity {
             TextView tvAdminItems;
             TextView tvAdminTotal;
             TextView tvAdminStatus;
+            TextView tvAdminTimer;
             Button btnWaiting;
             Button btnPreparing;
             Button btnReady;
@@ -84,6 +120,7 @@ public class AdminActivity extends AppCompatActivity {
                 tvAdminItems = itemView.findViewById(R.id.tvAdminItems);
                 tvAdminTotal = itemView.findViewById(R.id.tvAdminTotal);
                 tvAdminStatus = itemView.findViewById(R.id.tvAdminStatus);
+                tvAdminTimer = itemView.findViewById(R.id.tvAdminTimer);
                 btnWaiting = itemView.findViewById(R.id.btnWaiting);
                 btnPreparing = itemView.findViewById(R.id.btnPreparing);
                 btnReady = itemView.findViewById(R.id.btnReady);
@@ -118,24 +155,49 @@ public class AdminActivity extends AppCompatActivity {
             }
             holder.tvAdminItems.setText(pizzaNames.toString());
 
-            // כפתורי שינוי סטטוס
-            holder.btnWaiting.setOnClickListener(v -> updateStatus(orderId, "מחכה לאישור המנהל", position));
-            holder.btnPreparing.setOnClickListener(v -> updateStatus(orderId, "בהכנה", position));
-            holder.btnReady.setOnClickListener(v -> updateStatus(orderId, "מוכן", position));
+            // ===== טיימר =====
+            Object timeObj = order.get("estimatedTime");
+            Object startObj = order.get("startTime");
+            int estimatedTime = timeObj != null ? ((Long) timeObj).intValue() : 0;
 
-            // כפתור דחיית הזמנה — מעדכן סטטוס ל"נדחה" ב-Firestore
-            // הלקוח יראה במסך ההזמנות שלו שההזמנה נדחתה
-            holder.btnReject.setOnClickListener(v -> {
-                db.collection("orders").document(orderId)
-                        .update("status", "ההזמנה לא התקבלה")
-                        .addOnSuccessListener(unused -> {
-                            orders.get(position).put("status", "ההזמנה לא התקבלה");
-                            notifyItemChanged(position);
-                            Toast.makeText(AdminActivity.this, "ההזמנה נדחתה", Toast.LENGTH_SHORT).show();
-                        });
-            });
+            // ביטול טיימר קודם לפריט הזה אם קיים
+            if (timers.containsKey(position)) {
+                timers.get(position).cancel();
+                timers.remove(position);
+            }
 
-            // כפתור הגדרת זמן הכנה
+            if (estimatedTime == 0 || startObj == null) {
+                holder.tvAdminTimer.setText("⏱ זמן שנותר: ממתין");
+            } else {
+                long startTime = (Long) startObj;
+                long elapsed = System.currentTimeMillis() - startTime;
+                long remaining = (long) estimatedTime * 60 * 1000 - elapsed;
+
+                if (remaining <= 0) {
+                    holder.tvAdminTimer.setText("⏱ הזמנה מוכנה!");
+                } else {
+                    CountDownTimer timer = new CountDownTimer(remaining, 1000) {
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            int minutesLeft = (int) (millisUntilFinished / 1000 / 60);
+                            int secondsLeft = (int) (millisUntilFinished / 1000 % 60);
+                            holder.tvAdminTimer.setText("⏱ זמן שנותר: " + minutesLeft + ":" + String.format("%02d", secondsLeft));
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            holder.tvAdminTimer.setText("⏱ הזמנה מוכנה!");
+                        }
+                    }.start();
+                    timers.put(position, timer);
+                }
+            }
+
+            holder.btnWaiting.setOnClickListener(v -> updateStatus(orderId, "מחכה לאישור המנהל"));
+            holder.btnPreparing.setOnClickListener(v -> updateStatus(orderId, "בהכנה"));
+            holder.btnReady.setOnClickListener(v -> updateStatus(orderId, "מוכן"));
+            holder.btnReject.setOnClickListener(v -> updateStatus(orderId, "ההזמנה לא התקבלה"));
+
             holder.btnSetTimer.setOnClickListener(v -> {
                 String timeStr = holder.etTimer.getText().toString();
                 if (!timeStr.isEmpty()) {
@@ -148,14 +210,11 @@ public class AdminActivity extends AppCompatActivity {
             });
         }
 
-        public void updateStatus(String orderId, String status, int position) {
+        public void updateStatus(String orderId, String status) {
             db.collection("orders").document(orderId)
                     .update("status", status)
-                    .addOnSuccessListener(unused -> {
-                        orders.get(position).put("status", status);
-                        notifyItemChanged(position);
-                        Toast.makeText(AdminActivity.this, "סטטוס עודכן!", Toast.LENGTH_SHORT).show();
-                    });
+                    .addOnSuccessListener(unused ->
+                            Toast.makeText(AdminActivity.this, "סטטוס עודכן!", Toast.LENGTH_SHORT).show());
         }
 
         @Override

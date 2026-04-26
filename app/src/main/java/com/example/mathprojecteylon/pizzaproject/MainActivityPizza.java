@@ -65,8 +65,6 @@ public class MainActivityPizza extends AppCompatActivity {
         btnMyOrders = findViewById(R.id.btnMyOrders);
         btnLogout = findViewById(R.id.btnLogout);
 
-        // אם currentBuyer לא קיים — נוצר עם האימייל מ-Firebase
-        // חשוב! לא יוצרים עם אימייל ריק כדי שההזמנות ייטענו נכון
         if (Buyer.currentBuyer == null) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String email = user != null ? user.getEmail() : "";
@@ -76,9 +74,25 @@ public class MainActivityPizza extends AppCompatActivity {
         init();
     }
 
+    /**
+     * נקרא בכל פעם שהמסך חוזר לפוקוס — למשל אחרי חזרה מ-PizzaDetailsActivity.
+     * מעדכן את כפתור התשלום עם מספר הפריטים הנוכחי בעגלה.
+     */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (Buyer.currentBuyer != null && Buyer.currentBuyer.getCart() != null) {
+            int size = Buyer.currentBuyer.getCart().size();
+            if (size > 0) {
+                btnCheckout.setText("🛒 לתשלום | " + size + " פריטים");
+            } else {
+                btnCheckout.setText("🛒 לתשלום");
+            }
+        }
+    }
+
     public void init() {
 
-        // כפתור התנתקות
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

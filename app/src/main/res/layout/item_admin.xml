@@ -36,7 +36,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="#C0392B"
-        android:layout_marginBottom="12dp"/>
+        android:layout_marginBottom="6dp"/>
 
     <TextView
         android:id="@+id/tvAdminStatus"
@@ -45,6 +45,17 @@
         android:text="סטטוס: ממתין"
         android:textSize="13sp"
         android:textColor="#888888"
+        android:layout_marginBottom="6dp"/>
+
+    <!-- טיימר ספירה לאחור למנהל -->
+    <TextView
+        android:id="@+id/tvAdminTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="⏱ זמן שנותר: ממתין"
+        android:textSize="13sp"
+        android:textColor="#E67E22"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp"/>
 
     <!-- כפתורי סטטוס -->

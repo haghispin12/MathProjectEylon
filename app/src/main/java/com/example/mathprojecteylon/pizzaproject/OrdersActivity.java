@@ -7,7 +7,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +20,7 @@ import com.example.mathprojecteylon.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -78,20 +78,18 @@ public class OrdersActivity extends AppCompatActivity {
         notificationManager.notify(1, builder.build());
     }
 
+    /**
+     * שולף רק הזמנות פעילות של הלקוח — מחכה לאישור המנהל או בהכנה.
+     * הזמנות שמוכנות או נדחו לא יוצגו ברשימה.
+     */
     public void loadOrders() {
-        // הדפסת האימייל ל-Logcat לצורך בדיקה
         String email = Buyer.currentBuyer.getEmailS();
-        Log.d("Orders", "email: " + email);
 
         db.collection("orders")
                 .whereEqualTo("email", email)
+                .whereIn("status", Arrays.asList("מחכה לאישור המנהל", "בהכנה"))
                 .addSnapshotListener((queryDocumentSnapshots, error) -> {
-                    if (error != null) {
-                        Log.d("Orders", "error: " + error.getMessage());
-                        return;
-                    }
-
-                    Log.d("Orders", "docs: " + queryDocumentSnapshots.size());
+                    if (error != null) return;
 
                     for (CountDownTimer timer : timers.values()) {
                         timer.cancel();
@@ -185,6 +183,7 @@ public class OrdersActivity extends AppCompatActivity {
                         public void onFinish() {
                             holder.tvOrderTimer.setText("ההזמנה מוכנה!");
                             String docId = (String) order.get("docId");
+                            // עדכון ל"מוכן" יגרום ל-whereIn לסנן אותה החוצה אוטומטית
                             db.collection("orders").document(docId)
                                     .update("status", "מוכן");
                             sendNotification();
